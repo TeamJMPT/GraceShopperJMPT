@@ -23,7 +23,7 @@ export const fetchAllTrips = () => {
     axios.get('/api/trips')
       .then(res => res.data)
       .then(trips => {
-        console.log('Got the trips from the db!');
+        // console.log('Got the trips from the db!');
         dispatch(getAllTrips(trips))
       })
       .catch(console.error);

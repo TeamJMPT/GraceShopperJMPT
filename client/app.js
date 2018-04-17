@@ -11,7 +11,6 @@ const App = () => {
       <Navbar />
       <Trips />
       <SingleTrip />
-      <Routes />
     </div>
   )
 }
