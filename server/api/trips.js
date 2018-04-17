@@ -14,8 +14,8 @@ router.get('/:id', (req, res, next) => {
 
 router.post('/', (req, res, next) => {
     //creates and saves trip to database
-    Trip.create(req.data)
-    //redirects to the singleTrip view for that trip
-    .then(trip => res.redirect(`/${trip.id}`))
+    Trip.create(req.body)
+    //sends created status
+    .then(trip => res.status(201).json(trip))
     .catch(next)
 })
