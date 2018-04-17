@@ -14,7 +14,7 @@ class Trips extends Component {
     console.log("console logging props", this.props)
     return (
       <div>{this.props.trips.map(trip => {
-        return <div>{trip.name}</div>
+        return <div key={trip.id}>{trip.name}</div>
       })}</div>
     )
   }
