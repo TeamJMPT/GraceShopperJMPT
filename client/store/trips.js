@@ -30,9 +30,9 @@ export const fetchAllTrips = () => {
   }
 }
 
-export const fetchSingleTrip = () => {
+export const fetchSingleTrip = (id) => {
   return dispatch => {
-    axios.get('/api/trips/:id')
+    axios.get(`/api/trips/${id}`)
       .then(res => res.data)
       .then(trip => {
         dispatch(getSingleTrip(trip))
