@@ -10,7 +10,7 @@ const Trip = db.define('trip', {
         type: Sequelize.STRING,
         allowNull: false
     },
-    imageURL: {
+    imageUrl: {
         type: Sequelize.STRING,
         validate: {
             isUrl: true
@@ -22,7 +22,7 @@ const Trip = db.define('trip', {
         allowNull: false
     },
     description: {
-        type: Sequelize.STRING,
+        type: Sequelize.TEXT,
     }
 })
 
