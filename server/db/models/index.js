@@ -9,8 +9,8 @@ const Trip = require('./trips');
  *    BlogPost.belongsTo(User)
  */
 
- Category.hasMany(Trip);
- Trip.hasMany(Category);
+ Category.belongsToMany(Trip, {through: 'TripCategory'});
+ Trip.belongsToMany(Category, {through: 'TripCategory'});
 /**
  * We'll export all of our models here, so that any time a module needs a model,
  * we can just require it from 'db/models'
