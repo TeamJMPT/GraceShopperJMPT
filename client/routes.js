@@ -1,9 +1,12 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
-import {withRouter, Route, Switch} from 'react-router-dom'
+import { withRouter, Route, Switch} from 'react-router-dom'
 import PropTypes from 'prop-types'
 import {Login, Signup, UserHome} from './components'
+import Trips from './components/trips'
 import {me} from './store'
+
+import { fetchAllTrips } from './store/trips'
 
 /**
  * COMPONENT
@@ -21,6 +24,7 @@ class Routes extends Component {
         {/* Routes placed here are available to all visitors */}
         <Route path="/login" component={Login} />
         <Route path="/signup" component={Signup} />
+        <Route exact path="/trips" component={Trips} />
         {
           isLoggedIn &&
             <Switch>
@@ -49,7 +53,8 @@ const mapState = (state) => {
 const mapDispatch = (dispatch) => {
   return {
     loadInitialData () {
-      dispatch(me())
+      dispatch(fetchAllTrips());
+      dispatch(me());
     }
   }
 }
