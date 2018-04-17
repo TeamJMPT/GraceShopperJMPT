@@ -8,8 +8,8 @@ const App = () => {
   return (
     <div>
       <Navbar />
-      <Trips />
       <Routes />
+      <Trips />
     </div>
   )
 }
