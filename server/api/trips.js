@@ -9,11 +9,7 @@ router.get('/', (req, res, next) => {
 });
 
 router.get('/:id', (req, res, next) => {
-    Trip.findById({
-        where: {
-            id: id
-        }
-    })
+    Trip.findById(req.params.id)
     .then(trip => res.send(trip))
     .catch(next)
-})
+});
