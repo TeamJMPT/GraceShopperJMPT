@@ -24,7 +24,7 @@ describe('Trip routes', () => {
     }
 
     beforeEach(() => {
-      return User.create(testTrip)
+      return Trip.create(testTrip)
     })
 
     it('gets an individual trip by id', () => {
@@ -33,7 +33,7 @@ describe('Trip routes', () => {
         .expect(200)
         .then(res => {
           expect(res.body).to.be.an('object')
-          expect(res.body[0].name).to.be.equal(testTrip.name)
+          expect(res.body.name).to.be.equal('Game of Thrones')
         })
     })
   }) // end describe('/api/trips/:id')
