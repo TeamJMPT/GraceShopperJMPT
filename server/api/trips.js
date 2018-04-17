@@ -11,3 +11,11 @@ router.get('/:id', (req, res, next) => {
     .then(trip => res.send(trip))
     .catch(next)
 })
+
+router.post('/', (req, res, next) => {
+    //creates and saves trip to database
+    Trip.create(req.data)
+    //redirects to the singleTrip view for that trip
+    .then(trip => res.redirect(`/${trip.id}`))
+    .catch(next)
+})
