@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-// import { Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { fetchAllTrips } from '../store/trips';
 
 class Trips extends Component {
 
   componentDidMount(){
+    console.log("getAllTrips in component did mount")
     this.props.getAllTrips();
   }
 
