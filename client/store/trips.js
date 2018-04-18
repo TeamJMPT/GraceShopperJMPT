@@ -23,7 +23,6 @@ export function filterTrips(categoryId) {
 
 //THUNKS
 export const fetchAllTrips = () => {
-  console.log('in fetchAllTrips')
   return dispatch => {
     axios.get('/api/trips')
       .then(res => res.data)
