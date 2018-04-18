@@ -21,3 +21,13 @@ router.post('/', (req, res, next) => {
     .then(trip => res.status(201).json(trip))
     .catch(next)
 })
+
+router.put('/:id', (req, res, next) => {
+    Trip.update(req.body, 
+        {where: {id: req.params.id},
+         returning: true})
+    .then(trip => {
+            res.status(201).json(trip[1][0]);
+    })
+    .catch(next)
+})
