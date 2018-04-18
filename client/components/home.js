@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 
-export const Home = (props) => {
+const Home = (props) => {
     const welcomeMessage = "Welcome protagonists!\nChoose your quest!\nNorth or south,\neast or west.\n \nGo on an adventure.\nMake new friends.\nYou'll wish this\njourney never ends."
     console.log("homepage props: ", props);
     return (
@@ -18,3 +18,5 @@ export const Home = (props) => {
         </div>
     )
 }
+
+export default Home
