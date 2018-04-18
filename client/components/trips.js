@@ -11,6 +11,11 @@ class Trips extends Component {
     this.props.getAllTrips();
   }
 
+  trips(){
+    const { where=() => true } = this.props
+    return this.props.trips.filter(where)
+  }
+
   render() {
     console.log("trips now in trip component", this.props.trips)
     return (
@@ -18,7 +23,7 @@ class Trips extends Component {
         {/* <Sidebar /> */}
         <div className="wrap">
         {
-          this.props.trips.map(trip => {
+          this.trips().map(trip => {
             return (
               <div className="trips"  key={trip.id}>
                 <img src={trip.imageUrl} />
