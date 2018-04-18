@@ -1,5 +1,6 @@
 const Sequelize = require('sequelize')
 const db = require('../db')
+const Category = require('./category')
 
 const Trip = db.define('trip', {
     name: {
@@ -20,7 +21,14 @@ const Trip = db.define('trip', {
     },
     description: {
         type: Sequelize.TEXT,
-    }
+    },
+    // },
+    // {
+    // defaultScope: {
+    //     include: [
+    //         {model: Category }
+    //     ]
+    // }
 })
 
 
