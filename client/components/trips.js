@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 import { fetchAllTrips } from '../store/trips';
 
 class Trips extends Component {
@@ -10,6 +10,7 @@ class Trips extends Component {
   }
 
   render() {
+    console.log("trips now in trip component", this.props.trips)
     return (
       <div>
       {
@@ -30,7 +31,7 @@ class Trips extends Component {
 
 const mapState = state => {
   return {
-    trips: state.trips
+    trips: state.trips,
   }
 }
 
