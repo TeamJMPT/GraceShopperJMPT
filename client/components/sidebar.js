@@ -14,7 +14,7 @@ class Sidebar extends Component {
     const categories = this.props.categories
     console.log('HERE ARE categories!', this.props.categories)
         return (
-          <div className="sidenav">
+          // <div className="sidenav">
             <section className="sidebar">
               <div className="sidebar-header">
             <h3 href="#">
@@ -38,7 +38,7 @@ class Sidebar extends Component {
               })
             }
         </section>
-        </div>
+        // </div>
     )
   }
 }
