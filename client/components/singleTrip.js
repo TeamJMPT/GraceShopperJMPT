@@ -17,6 +17,7 @@ class SingleTrip extends Component {
             <h2>Location: {trip.location}</h2>
             <h2>Price: {trip.price}</h2>
             <button>BOOK NOW</button>
+            <button>Edit</button>
           </div>
         )
       }
