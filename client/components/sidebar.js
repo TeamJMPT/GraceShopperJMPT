@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { fetchAllCategories } from '../store/categories';
+import { filterTrips } from '../store/trips';
 
 class Sidebar extends Component {
 
@@ -10,6 +11,7 @@ class Sidebar extends Component {
   }
 
   render() {
+    const categories = this.props.categories
     console.log('HERE ARE categories!', this.props.categories)
         return (
           <section className="sidebar">
@@ -21,27 +23,40 @@ class Sidebar extends Component {
           </h3 >
         </div >
           <h5>Categories:</h5>
+          {
+            categories.map(category => {
+              return (
+                  <Link to={`/trips/category/${category.id}`} key={category.id}>
+              <ul onClick={() => {
+                // console.log("CATEGORY ID IN onCLICK", category.id)
+                this.props.handleSubmit(category.id)
+              }
+            }>{category.name}</ul>
+              </Link>
+              )
+            })
+          }
       </section>
     )
   }
 }
 
-const mapState = state => {
+const mapState = (state) => {
   return {
     categories: state.categories
   }
 }
 
-const mapDispatch = dispatch => {
+const mapDispatch = (dispatch) => {
   return {
     getAllCategories: () => {
       dispatch(fetchAllCategories());
+    },
+    handleSubmit: (id) => {
+      // evt.preventDefault();
+      dispatch(filterTrips(id));
     }
-    // handleClick: (evt) => {
-    //   evt.preventDefault();
-    //   dispatch(setSelectedTrips());
-    }
+  }
 }
 
 export default connect(mapState, mapDispatch)(Sidebar)
-
