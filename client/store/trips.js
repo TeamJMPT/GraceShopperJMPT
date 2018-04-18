@@ -3,8 +3,7 @@ import axios from 'axios';
 //ACTION TYPES
 const GET_ALL_TRIPS = 'GET_ALL_TRIPS';
 const GET_SINGLE_TRIP = 'GET_SINGLE_TRIP';
-const INPUT_NEW_TRIP = 'INPUT_NEW_TRIP';
-// const SET_SELECTED_TRIPS = 'SET_SELECTED_TRIPS';
+const FILTERED_TRIPS = 'FILTERED_TRIPS';
 
 
 
@@ -17,15 +16,10 @@ export function getSingleTrip(selectedTrip) {
   return {type: GET_SINGLE_TRIP, selectedTrip}
 }
 
-export function inputNewTrip(newTrip) {
-  return {type: INPUT_NEW_TRIP, newTrip}
+export function filterTrips(categoryId) {
+  // console.log("IN filterTrip action creator!")
+  return {type: FILTERED_TRIPS, categoryId}
 }
-
-
-
-// export function setSelectedTrips(categoryId) {
-//   return {type: SET_SELECTED_TRIPS, selectedTrips}
-// }
 
 //THUNKS
 export const fetchAllTrips = () => {
@@ -33,7 +27,7 @@ export const fetchAllTrips = () => {
     axios.get('/api/trips')
       .then(res => res.data)
       .then(trips => {
-        // console.log('Got the trips from the db!', trips.map(trip => trip.categories.map(category => category.name)));
+        console.log('Got the trips from the db!', trips.map(trip => trip.categories.map(category => category.name)));
         dispatch(getAllTrips(trips))
       })
       .catch(console.error);
@@ -66,14 +60,23 @@ export const createNewTrip = (newTrip, history) => {
 }
 
 //REDUCER(S)
-export function tripReducer(state = [], action) {
+export function tripReducer(trips = [], action) {
   switch (action.type) {
     case GET_ALL_TRIPS:
-      return action.trips
-    // case SET_SELECTED_TRIPS:
-    //   return action.selectedTrips
+      trips = action.trips
+      return trips
+    case FILTERED_TRIPS: {
+      trips = (trips.filter(trip => {
+        return trip.categories.some((category) => {
+          return category.id === action.categoryId
+        })
+      }))
+      // console.log("FILTERED TRIPS!", trips)
+      return trips
+    }
     default:
-      return state
+    // console.log('returning default in tripReducer')
+      return trips
   }
 }
 
