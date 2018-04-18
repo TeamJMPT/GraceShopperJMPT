@@ -4,14 +4,19 @@ import { fetchSingleTrip } from '../store/trips';
 
 class SingleTrip extends Component {
     componentDidMount(){
-        this.props.getSingleTrip();
+        this.props.getSingleTrip(this.props.match.params.id);
       }
     
     render() {
+        let trip = this.props.selectedTrip
         console.log("rendering single trip", this.props)
         return (
           <div>
-            <h1>Single Trip Page</h1>
+            <img src='{trip.imageUrl}' />
+            <h1>{trip.name}</h1>
+            <h2>Location: {trip.location}</h2>
+            <h2>Price: {trip.price}</h2>
+            <button>BOOK NOW</button>
           </div>
         )
       }
@@ -19,14 +24,14 @@ class SingleTrip extends Component {
     
     const mapState = state => {
       return {
-        selecteTrip: state.selecteTrip
+        selectedTrip: state.selectedTrip
       }
     }
     
     const mapDispatch = dispatch => {
      return {
-       getSingleTrip: () => {
-         dispatch(fetchSingleTrip());
+       getSingleTrip: (id) => {
+         dispatch(fetchSingleTrip(id));
        }
      }
     }
