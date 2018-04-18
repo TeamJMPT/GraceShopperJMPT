@@ -27,7 +27,7 @@ router.put('/:id', (req, res, next) => {
         {where: {id: req.params.id},
          returning: true})
     .then(trip => {
-            res.status(201).json(trip[1][0]);
+            res.status(201).json(trip[1][0])
     })
     .catch(next)
 })
