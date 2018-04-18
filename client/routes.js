@@ -33,7 +33,8 @@ class Routes extends Component {
         <Route path="/login" component={Login} />
         <Route path="/signup" component={Signup} />
         <Route exact path="/trips" component={Trips} />
-        <Route exact path= "/trips/:id" component={singleTrip}/>
+        <Route exact path= "/trips/:id" component={singleTrip} />
+        <Route exact path="/trips/category/:id" component={Trips} />
         <Route exact path="/add" component={AddNewTrip} />
         {
           isLoggedIn &&
