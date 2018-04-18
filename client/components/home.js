@@ -2,13 +2,19 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 
 const Home = (props) => {
-    const welcomeMessage = "Welcome protagonists!\nChoose your quest!\nNorth or south,\neast or west.\n \nGo on an adventure.\nMake new friends.\nYou'll wish this\njourney never ends."
     console.log("homepage props: ", props);
     return (
         <div>
             <section>
-                <img src="https://i.imgur.com/mxeb2NK.png" />
-                <p>{welcomeMessage}</p>
+                <img src="https://i.imgur.com/mxeb2NK.png" width="50%" height="50%" align="center" />
+                <p align="center">Welcome protagonists!</p>
+                <p align="center">Choose your quest!</p>
+                <p align="center">North or south,</p>
+                <p align="center">east or west.</p>
+                <p align="center">Go on an adventure.</p>
+                <p align="center">Make new friends.</p>
+                <p align="center">You'll wish this</p>
+                <p align="center">journey never ends.</p>
             </section>
             <hr />
             <section>
