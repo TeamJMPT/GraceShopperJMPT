@@ -17,7 +17,7 @@ export function getSingleTrip(selectedTrip) {
 }
 
 export function filterTrips(categoryId) {
-  // console.log("IN filterTrip action creator!")
+  console.log("IN filterTrip action creator!")
   return {type: FILTERED_TRIPS, categoryId}
 }
 
@@ -50,7 +50,7 @@ export const createNewTrip = (newTrip, history) => {
     return axios.post('/api/trips', newTrip)
       .then(res => {
         console.log("RES.DATA:", res.data)
-        res.data
+        return res.data
       })
       .then(newTrip => {
         dispatch(getSingleTrip(newTrip))
@@ -71,7 +71,7 @@ export function tripReducer(trips = [], action) {
           return category.id === action.categoryId
         })
       }))
-      // console.log("FILTERED TRIPS!", trips)
+      console.log("FILTERED TRIPS!", trips)
       return trips
     }
     default:
