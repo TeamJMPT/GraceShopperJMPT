@@ -6,17 +6,20 @@ import { fetchAllTrips } from '../store/trips';
 class Trips extends Component {
 
   componentDidMount(){
+    console.log("getAllTrips in component did mount")
     this.props.getAllTrips();
   }
 
   render() {
+    console.log("trips now in trip component", this.props.trips)
     return (
       <div>
       {
         this.props.trips.map(trip => {
           return (
             <div key={trip.id}>
-              <h3>{trip.name}</h3>
+              <img src={trip.imageUrl} />
+              <Link to={`/trips/${trip.id}`} className='trips'><h3>{trip.name}</h3></Link>
               <h5>{trip.location}</h5>
               <h5>{`$${trip.price}`}</h5>
             </div>
@@ -30,7 +33,7 @@ class Trips extends Component {
 
 const mapState = state => {
   return {
-    trips: state.trips
+    trips: state.trips,
   }
 }
 

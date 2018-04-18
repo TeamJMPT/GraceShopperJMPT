@@ -8,6 +8,7 @@ import {me} from './store'
 
 import { fetchAllTrips } from './store/trips'
 import singleTrip from './components/singleTrip';
+import addNewTrip from './components/addNewTrip';
 
 /**
  * COMPONENT
@@ -27,7 +28,9 @@ class Routes extends Component {
         <Route path="/signup" component={Signup} />
         <Route path="/home" component={Home} />
         <Route exact path="/trips" component={Trips} />
-        <Route exact path= "/trips/:id" component={singleTrip}/>
+        <Route exact path= "/trips/:id" component={singleTrip} />
+        <Route path="/trips/category/:id" component={Trips} />
+        <Route path="/add" component={addNewTrip} />
         {
           isLoggedIn &&
             <Switch>
