@@ -19,6 +19,10 @@ const Navbar = ({ handleClick, isLoggedIn }) => (
         ) : (
           <div>
             {/* The navbar will show these links before you log in */}
+            <div class="container-1">
+               <span class="icon"><i class="fa fa-search"></i></span>
+                  <input type="search" id="search" placeholder="Search..." />
+            </div>
             <Link to="/add">Add</Link>
             <Link to="/trips">Quests</Link>
             <Link to="/cart">Cart</Link>
