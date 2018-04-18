@@ -45,6 +45,20 @@ export const fetchSingleTrip = (id) => {
   }
 }
 
+export const createNewTrip = (newTrip, history) => {
+  return dispatch => {
+    return axios.post('/api/trips', newTrip)
+      .then(res => {
+        console.log("RES.DATA:", res.data)
+        res.data
+      })
+      .then(newTrip => {
+        dispatch(getSingleTrip(newTrip))
+        history.push(`/trips/${newTrip.id}`)
+      })
+  }
+}
+
 //REDUCER(S)
 export function tripReducer(trips = [], action) {
   switch (action.type) {
