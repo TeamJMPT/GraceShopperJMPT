@@ -11,6 +11,7 @@ import singleTrip from './components/singleTrip';
 
 import addNewTrip from './components/addNewTrip';
 import Home from './components/home';
+import AddNewTrip from './components/addNewTrip';
 
 
 /**
@@ -33,6 +34,7 @@ class Routes extends Component {
         <Route path="/signup" component={Signup} />
         <Route exact path="/trips" component={Trips} />
         <Route exact path= "/trips/:id" component={singleTrip}/>
+        <Route exact path="/add" component={AddNewTrip} />
         {
           isLoggedIn &&
             <Switch>
