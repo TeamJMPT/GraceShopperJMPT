@@ -12,7 +12,7 @@ class SingleTrip extends Component {
         console.log("rendering single trip", this.props)
         return (
           <div>
-            <img src='{trip.imageUrl}' />
+            <img src={trip.imageUrl} />
             <h1>{trip.name}</h1>
             <h2>Location: {trip.location}</h2>
             <h2>Price: {trip.price}</h2>
