@@ -3,7 +3,7 @@ import createLogger from 'redux-logger'
 import thunkMiddleware from 'redux-thunk'
 import {composeWithDevTools} from 'redux-devtools-extension'
 import user from './user'
-import {tripReducer, filteredTripsReducer, singleTripReducer} from './trips';
+import {tripReducer, singleTripReducer} from './trips';
 import categoriesReducer from './categories';
 
 const reducer = combineReducers({user, trips: tripReducer, selectedTrip: singleTripReducer, categories: categoriesReducer})

@@ -1,8 +1,8 @@
 import React, { Component } from "react";
-// import { connect } from "react-redux";
+import { connect } from "react-redux";
 import { createNewTrip } from "../store/trips"
 
-export default class AddNewTrip extends Component {
+class AddNewTrip extends Component {
     constructor(props) {
         super(props)
         console.log("props", props)
@@ -23,7 +23,7 @@ export default class AddNewTrip extends Component {
     }
 
     handleSubmit(e) {
-        
+
         e.preventDefault();
         const newTrip = {
             name : this.state.name,
@@ -32,7 +32,7 @@ export default class AddNewTrip extends Component {
             price : +this.state.price,
             description : this.state.description
         }
-        createNewTrip(newTrip)
+        this.props.createNewTrip(newTrip, this.props.history)
         this.setState({
             name : '',
             location : '',
@@ -49,7 +49,7 @@ export default class AddNewTrip extends Component {
                 <div>
                     <h2>Add a New Trip</h2>
                     <label>Name</label>
-                    <input 
+                    <input
                         type="text"
                         value={this.state.name}
                         onChange={this.handleChange}
@@ -57,7 +57,7 @@ export default class AddNewTrip extends Component {
                         placeholder="Enter trip name"
                     />
                     <label>location</label>
-                    <input 
+                    <input
                         type="text"
                         value={this.state.location}
                         onChange={this.handleChange}
@@ -65,7 +65,7 @@ export default class AddNewTrip extends Component {
                         placeholder="Enter location"
                     />
                     <label>imageURL</label>
-                    <input 
+                    <input
                         type="text"
                         value={this.state.imageURL}
                         onChange={this.handleChange}
@@ -74,14 +74,14 @@ export default class AddNewTrip extends Component {
                     />
                     <label>Price</label>
                     <input
-                        type="number" 
+                        type="number"
                         value={this.state.price}
                         onChange={this.handleChange}
                         name="price"
                         placeholder="Enter trip price"
                     />
                     <label>Description</label>
-                    <input 
+                    <input
                         type="text"
                         value={this.state.description}
                         onChange={this.handleChange}
@@ -129,4 +129,4 @@ export default class AddNewTrip extends Component {
 //     }
 // }
 
-// export default connect(mapDispatch)(AddNewTrip);
+export default connect(null, {createNewTrip})(AddNewTrip);

@@ -65,15 +65,15 @@ export function tripReducer(trips = [], action) {
     case GET_ALL_TRIPS:
       trips = action.trips
       return trips
-    case FILTERED_TRIPS: {
-      trips = (trips.filter(trip => {
-        return trip.categories.some((category) => {
-          return category.id === action.categoryId
-        })
-      }))
-      console.log("FILTERED TRIPS!", trips)
-      return trips
-    }
+    // case FILTERED_TRIPS: {
+    //   trips = (trips.filter(trip => {
+    //     return trip.categories.some((category) => {
+    //       return category.id === action.categoryId
+    //     })
+    //   }))
+    //   console.log("FILTERED TRIPS!", trips)
+    // //   return trips
+    // }
     default:
     // console.log('returning default in tripReducer')
       return trips

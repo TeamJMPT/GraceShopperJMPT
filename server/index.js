@@ -51,6 +51,13 @@ const createApp = () => {
   app.use(passport.initialize())
   app.use(passport.session())
 
+  // app.use((req, res, next) => {
+  //   req.session.hello = 'world'
+  //   next()
+  // })
+
+  app.get('/zsession', (req, res) => res.send(req.session))
+
   // auth and api routes
   app.use('/auth', require('./auth'))
   app.use('/api', require('./api'))
