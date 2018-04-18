@@ -21,3 +21,25 @@ router.post('/', (req, res, next) => {
     .then(trip => res.status(201).json(trip))
     .catch(next)
 })
+
+router.put('/:id', (req, res, next) => {
+    Trip.update(req.body, 
+        {where: {id: req.params.id},
+         returning: true})
+    .then(trip => {
+            res.status(201).json(trip[1][0]);
+    })
+    .catch(next)
+})
+
+router.delete('/:id', (req, res, next) => {
+    Trip.destroy({
+        where: {
+            id: req.params.id
+        }
+    })
+    .then(() => {
+        res.sendStatus(204);
+    })
+    .catch(next);
+})

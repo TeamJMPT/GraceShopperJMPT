@@ -31,7 +31,7 @@ async function seed () {
     Trip.create({name: 'Mordor', location: 'East of Gondor', imageURL: "https://i.pinimg.com/564x/de/8c/77/de8c77f0ca734f0455b11889bd58a582.jpg", 
     price: '2000', description: "J. R. R. Tolkien's fictional world of Middle-earth, Mordor was the region occupied and controlled by Sauron, in the southeast of northwestern Middle-earth to the East of Anduin, the great river."}),
     Trip.create({name: 'Jurassic Park', location: 'Kauai', imageURL: "https://i.pinimg.com/564x/4b/68/b5/4b68b54fca576aed0d0e0074adf55d0e.jpg", 
-    price: '3500', description: "Jurassic Park is an American science fiction media franchise centered on a disastrous attempt to create a theme park of cloned dinosaurs who escape confinement and terrorize the human characters."}),
+    price: '3500', description: 'Jurassic Park is an American science fiction media franchise centered on a disastrous attempt to create a theme park of cloned dinosaurs who escape confinement and terrorize the human characters.'}),
     Trip.create({name: 'Narnia', location: 'United Kingdom', imageURL: "https://i.pinimg.com/564x/c8/c0/aa/c8c0aadbe70397dc6c43b362081e7e8f.jpg", 
     price: '5000', description: " C. S. Lewis's a fantasy world of magic, mythical beasts, and talking animals, the series narrates the adventures of various children who play central roles in the unfolding history of that world."}),
     Trip.create({name: 'Tatooine', location: 'Outer Rim Galaxy', imageURL: "https://i.pinimg.com/564x/c8/c0/aa/c8c0aadbe70397dc6c43b362081e7e8f.jpg", 
