@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { fetchAllTrips } from '../store/trips';
+// import Sidebar from './sidebar';
 
 class Trips extends Component {
 
@@ -14,18 +15,21 @@ class Trips extends Component {
     console.log("trips now in trip component", this.props.trips)
     return (
       <div>
-      {
-        this.props.trips.map(trip => {
-          return (
-            <div key={trip.id}>
-              <img src={trip.imageUrl} />
-              <Link to={`/trips/${trip.id}`} className='trips'><h3>{trip.name}</h3></Link>
-              <h5>{trip.location}</h5>
-              <h5>{`$${trip.price}`}</h5>
-            </div>
-          )
-        })
-      }
+        {/* <Sidebar /> */}
+        <div className="wrap">
+        {
+          this.props.trips.map(trip => {
+            return (
+              <div className="trips"  key={trip.id}>
+                <img src={trip.imageUrl} />
+                <Link to={`/trips/${trip.id}`} className='trips'><h3>{trip.name}</h3></Link>
+                <h5>{trip.location}</h5>
+                <h5>{`$${trip.price}`}</h5>
+              </div>
+            )
+          })
+        }
+        </div>
       </div>
     )
   }

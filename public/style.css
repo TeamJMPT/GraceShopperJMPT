@@ -19,3 +19,28 @@ form div {
   margin: 1em;
   display: inline-block;
 }
+
+.wrap {
+  display: flex;
+  flex-wrap: wrap;
+}
+.trips {
+  flex: 1;
+}
+img{
+  width: 20em;
+  height: 28em;
+}
+.sidenav{
+  height: 100%;
+    width: 160px;
+    position: fixed;
+    z-index: 1;
+    top: 160px;
+    left: 0;
+    background-color: rgb(238, 237, 237);
+    overflow-x: hidden;
+    padding-top: 20px;
+
+  
+}
