@@ -6,7 +6,7 @@ const Home = (props) => {
     return (
         <div>
             <section>
-                <img src="https://i.imgur.com/mxeb2NK.png" width="50%" height="50%" align="center" />
+                <img className="main-img"src="https://i.imgur.com/mxeb2NK.png" width="50%" height="50%" align="center" />
                 <p align="center">Welcome protagonists!</p>
                 <p align="center">Choose your quest!</p>
                 <p align="center">North or south,</p>

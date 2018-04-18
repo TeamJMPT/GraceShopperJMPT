@@ -31,6 +31,10 @@ img{
   width: 20em;
   height: 28em;
 }
+.main-img{
+  width: 100%;
+  height: 28em;
+}
 /* .sidenav{
   height: 100%;
     width: 160px;
