@@ -31,3 +31,15 @@ router.put('/:id', (req, res, next) => {
     })
     .catch(next)
 })
+
+router.delete('/:id', (req, res, next) => {
+    Trip.destroy({
+        where: {
+            id: req.params.id
+        }
+    })
+    .then(() => {
+        res.sendStatus(204);
+    })
+    .catch(next);
+})
