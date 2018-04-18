@@ -27,7 +27,7 @@ export const fetchAllTrips = () => {
     axios.get('/api/trips')
       .then(res => res.data)
       .then(trips => {
-        // console.log('Got the trips from the db!', trips.map(trip => trip.categories.map(category => category.name)));
+        console.log('Got the trips from the db!', trips.map(trip => trip.categories.map(category => category.name)));
         dispatch(getAllTrips(trips))
       })
       .catch(console.error);
@@ -57,11 +57,11 @@ export function tripReducer(trips = [], action) {
           return category.id === action.categoryId
         })
       }))
-      console.log("FILTERED TRIPS!", trips)
+      // console.log("FILTERED TRIPS!", trips)
       return trips
     }
     default:
-    console.log('returning default in tripReducer')
+    // console.log('returning default in tripReducer')
       return trips
   }
 }
