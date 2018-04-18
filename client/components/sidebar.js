@@ -14,29 +14,31 @@ class Sidebar extends Component {
     const categories = this.props.categories
     console.log('HERE ARE categories!', this.props.categories)
         return (
-          <section className="sidebar">
-            <div className="sidebar-header">
-          <h3 href="#">
-            <div>QUEST</div>
-            <i alt="Brand" className="glyphicon glyphicon-comment">
-            </i>
-          </h3 >
-        </div >
-          <h5>Categories:</h5>
-          {
-            categories.map(category => {
-              return (
-                  <Link to={`/trips/category/${category.id}`} key={category.id}>
-              <ul onClick={() => {
-                // console.log("CATEGORY ID IN onCLICK", category.id)
-                this.props.handleSubmit(category.id)
-              }
-            }>{category.name}</ul>
-              </Link>
-              )
-            })
-          }
-      </section>
+          <div className="sidenav">
+            <section className="sidebar">
+              <div className="sidebar-header">
+            <h3 href="#">
+              <div>QUEST</div>
+              <i alt="Brand" className="glyphicon glyphicon-comment">
+              </i>
+            </h3 >
+          </div >
+            <h5>Categories:</h5>
+            {
+              categories.map(category => {
+                return (
+                    <Link to={`/trips/category/${category.id}`} key={category.id}>
+                <ul onClick={() => {
+                  // console.log("CATEGORY ID IN onCLICK", category.id)
+                  this.props.handleSubmit(category.id)
+                }
+              }>{category.name}</ul>
+                </Link>
+                )
+              })
+            }
+        </section>
+        </div>
     )
   }
 }

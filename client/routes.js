@@ -8,7 +8,8 @@ import {me} from './store'
 
 import { fetchAllTrips } from './store/trips'
 import singleTrip from './components/singleTrip';
-import addNewTrip from './components/addNewTrip';
+//import Sidebar from './sidebar';
+
 
 /**
  * COMPONENT
@@ -23,13 +24,12 @@ class Routes extends Component {
 
     return (
       <Switch>
+
         {/* Routes placed here are available to all visitors */}
         <Route path="/login" component={Login} />
         <Route path="/signup" component={Signup} />
         <Route exact path="/trips" component={Trips} />
-        <Route exact path= "/trips/:id" component={singleTrip} />
-        <Route path="/trips/category/:id" component={Trips} />
-        <Route path="/add" component={addNewTrip} />
+        <Route exact path= "/trips/:id" component={singleTrip}/>
         {
           isLoggedIn &&
             <Switch>
