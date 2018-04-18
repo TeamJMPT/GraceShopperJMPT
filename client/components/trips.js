@@ -21,7 +21,7 @@ class Trips extends Component {
           this.props.trips.map(trip => {
             return (
               <div className="trips"  key={trip.id}>
-                <img src={trip.imageUrl} />
+                <img className="trips-images"src={trip.imageUrl} />
                 <Link to={`/trips/${trip.id}`} className='trips'><h3>{trip.name}</h3></Link>
                 <h5>{trip.location}</h5>
                 <h5>{`$${trip.price}`}</h5>
