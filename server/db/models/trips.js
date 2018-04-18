@@ -12,9 +12,6 @@ const Trip = db.define('trip', {
     },
     imageUrl: {
         type: Sequelize.STRING,
-        validate: {
-            isUrl: true
-        },
         defaultValue: "http://chittagongit.com/images/no-image-icon/no-image-icon-5.jpg"
     },
     price: {
