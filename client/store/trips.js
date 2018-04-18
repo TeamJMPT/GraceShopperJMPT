@@ -3,6 +3,7 @@ import axios from 'axios';
 //ACTION TYPES
 const GET_ALL_TRIPS = 'GET_ALL_TRIPS';
 const GET_SINGLE_TRIP = 'GET_SINGLE_TRIP';
+const INPUT_NEW_TRIP = 'INPUT_NEW_TRIP';
 // const SET_SELECTED_TRIPS = 'SET_SELECTED_TRIPS';
 
 
@@ -15,6 +16,12 @@ export function getAllTrips(trips) {
 export function getSingleTrip(selectedTrip) {
   return {type: GET_SINGLE_TRIP, selectedTrip}
 }
+
+export function inputNewTrip(newTrip) {
+  return {type: INPUT_NEW_TRIP, newTrip}
+}
+
+
 
 // export function setSelectedTrips(categoryId) {
 //   return {type: SET_SELECTED_TRIPS, selectedTrips}
@@ -41,6 +48,20 @@ export const fetchSingleTrip = (id) => {
         dispatch(getSingleTrip(trip))
       })
       .catch(console.error)
+  }
+}
+
+export const createNewTrip = (newTrip, history) => {
+  return dispatch => {
+    return axios.post('/api/trips', newTrip)
+      .then(res => {
+        console.log("RES.DATA:", res.data)
+        res.data
+      })
+      .then(newTrip => {
+        dispatch(getSingleTrip(newTrip))
+        history.push(`/trips/${newTrip.id}`)
+      })
   }
 }
 

@@ -4,6 +4,7 @@ import {Navbar, Trips} from './components'
 import Routes from './routes'
 import SingleTrip from './components/singleTrip';
 import Sidebar from './components/sidebar';
+import addNewTrip from './components/addNewTrip';
 
 
 const App = () => {
