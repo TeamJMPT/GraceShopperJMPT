@@ -8,7 +8,9 @@ import {me} from './store'
 
 import { fetchAllTrips } from './store/trips'
 import singleTrip from './components/singleTrip';
-//import Sidebar from './sidebar';
+
+import addNewTrip from './components/addNewTrip';
+import Home from './components/home';
 
 
 /**
@@ -26,6 +28,7 @@ class Routes extends Component {
       <Switch>
 
         {/* Routes placed here are available to all visitors */}
+        <Route exact path="/" component={Home} />
         <Route path="/login" component={Login} />
         <Route path="/signup" component={Signup} />
         <Route exact path="/trips" component={Trips} />
