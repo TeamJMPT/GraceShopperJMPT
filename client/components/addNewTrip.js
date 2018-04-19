@@ -1,6 +1,6 @@
-import React, { Component } from "react";
-import { connect } from "react-redux";
-import { createNewTrip } from "../store/trips"
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { createNewTrip } from '../store/trips';
 
 class AddNewTrip extends Component {
     constructor(props) {
@@ -26,25 +26,25 @@ class AddNewTrip extends Component {
 
         e.preventDefault();
         const newTrip = {
-            name : this.state.name,
-            location : this.state.location,
-            imageURL : this.state.imageURL,
-            price : +this.state.price,
-            description : this.state.description
+            name: this.state.name,
+            location: this.state.location,
+            imageURL: this.state.imageURL,
+            price: +this.state.price,
+            description: this.state.description
         }
         this.props.createNewTrip(newTrip, this.props.history)
         this.setState({
-            name : '',
-            location : '',
-            imageURL : '',
-            price : '',
-            description : ''
+            name: '',
+            location: '',
+            imageURL: '',
+            price: '',
+            description: ''
         })
         console.log("Form is submitted!!", newTrip)
     }
 
     render() {
-        return(
+        return (
             <form onSubmit={this.handleSubmit}>
                 <div>
                     <h2>Add a New Trip</h2>
