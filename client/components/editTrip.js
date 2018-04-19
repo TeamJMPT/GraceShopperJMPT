@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { createNewTrip } from '../store/trips'
+import { updateTrip } from '../store/trips'
 
 class EditTrip extends Component {
   constructor(props) {
@@ -22,16 +22,17 @@ class EditTrip extends Component {
   }
 
   handleSubmit(e) {
-
+    const { selectedTrip } = this.props
     e.preventDefault();
-    const newTrip = {
-      name: this.state.name,
-      location: this.state.location,
-      imageURL: this.state.imageURL,
-      price: +this.state.price,
-      description: this.state.description
+    const updatedTrip = {
+      name: this.state.name || selectedTrip.name,
+      location: this.state.location || selectedTrip.location,
+      imageURL: this.state.imageURL || selectedTrip.imageUrl,
+      price: +this.state.price || selectedTrip.price,
+      description: this.state.description || selectedTrip.description,
+      id: selectedTrip.id
     }
-    this.props.createNewTrip(newTrip, this.props.history)
+    this.props.updateTrip(updatedTrip)
     this.setState({
       name: '',
       location: '',
@@ -39,7 +40,6 @@ class EditTrip extends Component {
       price: '',
       description: ''
     })
-    console.log("Form is submitted!!", newTrip)
   }
 
   render() {
@@ -91,7 +91,7 @@ class EditTrip extends Component {
           />
         </div>
         <div>
-          <button type="submit">Create Trip</button>
+          <button type="submit">Update Trip</button>
         </div>
       </form>
     );
@@ -130,4 +130,4 @@ const mapState = (state) => {
 //     }
 // }
 
-export default connect(mapState, { createNewTrip })(EditTrip);
+export default connect(mapState, { updateTrip })(EditTrip);

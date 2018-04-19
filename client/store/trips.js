@@ -61,16 +61,16 @@ export const createNewTrip = (newTrip, history) => {
         console.log("Getting res.data", res.data)
         return res.data
       })
-      .then(newTrip => {
-        dispatch(addTrip(newTrip))
-        history.push(`/trips/${newTrip.id}`)
+      .then(trip => {
+        dispatch(addTrip(trip))
+        history.push(`/trips/${trip.id}`)
       })
   }
 }
 
 export const updateTrip = (updatedTrip) => {
   return dispatch => {
-    return axios.put('/api/trips', updatedTrip)
+    return axios.put(`/api/trips/${updatedTrip.id}`, updatedTrip)
       .then(res => {
         console.log("Getting updated trip back", res.data)
         return res.data
