@@ -68,7 +68,7 @@ export const createNewTrip = (newTrip, history) => {
   }
 }
 
-export const updateTrip = (updatedTrip) => {
+export const updateTrip = (updatedTrip, history) => {
   return dispatch => {
     return axios.put(`/api/trips/${updatedTrip.id}`, updatedTrip)
       .then(res => {
@@ -77,6 +77,7 @@ export const updateTrip = (updatedTrip) => {
       })
       .then(updated => {
         dispatch(addUpdatedTrip(updated))
+        history.push(`/trips/${updated.id}`)
       })
   }
 }

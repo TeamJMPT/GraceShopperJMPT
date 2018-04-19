@@ -32,7 +32,7 @@ class EditTrip extends Component {
       description: this.state.description || selectedTrip.description,
       id: selectedTrip.id
     }
-    this.props.updateTrip(updatedTrip)
+    this.props.updateTrip(updatedTrip, this.props.history)
     this.setState({
       name: '',
       location: '',
@@ -44,7 +44,7 @@ class EditTrip extends Component {
 
   render() {
     const { selectedTrip } = this.props;
-    { console.log("SELECTEDTRIP IN EDIT FORM", this.props.selectedTrip) }
+    { console.log("props?", this.props) }
     return (
       <form onSubmit={this.handleSubmit}>
         <div>
