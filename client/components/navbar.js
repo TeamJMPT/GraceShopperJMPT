@@ -15,6 +15,10 @@ const Navbar = ({ handleClick, isLoggedIn }) => (
         {isLoggedIn ? (
           <div>
             {/* The navbar will show these links after you log in */}
+            <input type="search" id="search" placeholder="Search..." />
+            <Link to="/add">Add</Link>
+            <Link to="/trips">Quests</Link>
+            <Link to="/cart">Cart</Link>
             <a href="#" onClick={handleClick}>
               Logout
             </a>
@@ -25,13 +29,12 @@ const Navbar = ({ handleClick, isLoggedIn }) => (
             <div className="container-1">
                <span className="icon"><i className="fa fa-search"></i></span>
                <input type="search" id="search" placeholder="Search..." />
-               <Link to="/add">Add</Link>
                 <Link to="/trips">Quests</Link>
                 <Link to="/cart">Cart</Link>
                 <Link to="/login">Login</Link>
                 <Link to="/signup">Sign Up</Link>
             </div>
-            
+
           </div>
         )}
     </nav>
@@ -44,7 +47,8 @@ const Navbar = ({ handleClick, isLoggedIn }) => (
  */
 const mapState = state => {
   return {
-    isLoggedIn: !!state.user.id
+    isLoggedIn: !!state.user.id,
+    isAdmin: !!state.user.isAdmin
   }
 }
 

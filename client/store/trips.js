@@ -4,6 +4,8 @@ import axios from 'axios';
 const GET_ALL_TRIPS = 'GET_ALL_TRIPS';
 const GET_SINGLE_TRIP = 'GET_SINGLE_TRIP';
 const FILTERED_TRIPS = 'FILTERED_TRIPS';
+const ADD_TRIP = 'ADD_TRIP';
+const ADD_UPDATED_TRIP = 'ADD_UPDATED_TRIP';
 
 
 //ACTION CREATORS
@@ -18,6 +20,14 @@ export function getSingleTrip(selectedTrip) {
 export function filterTrips(categoryId) {
   console.log("IN filterTrip action creator!")
   return {type: FILTERED_TRIPS, categoryId}
+}
+
+export function addTrip(newTrip) {
+  return {type: ADD_TRIP, newTrip}
+}
+
+export function addUpdatedTrip(updatedTrip) {
+  return {type: ADD_UPDATED_TRIP, updatedTrip}
 }
 
 //THUNKS
@@ -48,12 +58,25 @@ export const createNewTrip = (newTrip, history) => {
   return dispatch => {
     return axios.post('/api/trips', newTrip)
       .then(res => {
-        console.log("RES.DATA:", res.data)
+        console.log("Getting res.data", res.data)
         return res.data
       })
       .then(newTrip => {
-        dispatch(getSingleTrip(newTrip))
+        dispatch(addTrip(newTrip))
         history.push(`/trips/${newTrip.id}`)
+      })
+  }
+}
+
+export const updateTrip = (updatedTrip) => {
+  return dispatch => {
+    return axios.put('/api/trips', updatedTrip)
+      .then(res => {
+        console.log("Getting updated trip back", res.data)
+        return res.data
+      })
+      .then(updated => {
+        dispatch(addUpdatedTrip(updated))
       })
   }
 }
@@ -64,6 +87,10 @@ export function tripReducer(trips = [], action) {
     case GET_ALL_TRIPS:
       trips = action.trips
       return trips
+    case ADD_TRIP:
+      return [...trips, action.newTrip]
+    case ADD_UPDATED_TRIP:
+      return [...trips, action.updatedTrip]
     default:
       return trips
   }
