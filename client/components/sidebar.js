@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { fetchAllCategories } from '../store/categories';
-import { filterTrips } from '../store/trips';
+// import { filterTrips } from '../store/trips';
 
 class Sidebar extends Component {
 
@@ -12,7 +12,6 @@ class Sidebar extends Component {
 
   render() {
     const categories = this.props.categories
-    console.log('HERE ARE categories!', this.props.categories)
         return (
           // <div className="sidenav">
             <section className="sidebar">
@@ -28,11 +27,7 @@ class Sidebar extends Component {
               categories.map(category => {
                 return (
                     <Link to={`/trips/category/${category.id}`} key={category.id}>
-                <ul onClick={() => {
-                  // console.log("CATEGORY ID IN onCLICK", category.id)
-                  this.props.handleSubmit(category.id)
-                }
-              }>{category.name}</ul>
+                <ul>{category.name}</ul>
                 </Link>
                 )
               })
@@ -53,12 +48,9 @@ const mapDispatch = (dispatch) => {
   return {
     getAllCategories: () => {
       dispatch(fetchAllCategories());
-    },
-    handleSubmit: (id) => {
-      // evt.preventDefault();
-      dispatch(filterTrips(id));
     }
   }
 }
 
-export default connect(mapState, mapDispatch)(Sidebar)
+export default connect(mapState, mapDispatch)(Sidebar);
+

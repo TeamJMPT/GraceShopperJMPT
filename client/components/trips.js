@@ -2,13 +2,16 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { fetchAllTrips } from '../store/trips';
-// import Sidebar from './sidebar';
 
 class Trips extends Component {
 
   componentDidMount(){
-    console.log("getAllTrips in component did mount")
     this.props.getAllTrips();
+  }
+
+  trips(){
+    const { where = () => true } = this.props
+    return this.props.trips.filter(where)
   }
 
   render() {
@@ -18,7 +21,7 @@ class Trips extends Component {
         {/* <Sidebar /> */}
         <div className="wrap">
         {
-          this.props.trips.map(trip => {
+          this.trips().map(trip => {
             return (
               <div className="trips"  key={trip.id}>
                 <img className="trips-images"src={trip.imageUrl} />

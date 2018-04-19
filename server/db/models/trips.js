@@ -1,6 +1,6 @@
 const Sequelize = require('sequelize')
 const db = require('../db')
-const Category = require('./category')
+// const Category = require('./category')
 
 const Trip = db.define('trip', {
     name: {

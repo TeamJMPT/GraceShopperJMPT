@@ -5,7 +5,7 @@ const request = require('supertest')
 const db = require('../db')
 const app = require('../index')
 const User = db.model('user')
-const Trip = db.model('trips')
+const Trip = db.model('trip')
 const Category = db.model('category')
 
 describe('Trip routes', () => {
@@ -29,7 +29,7 @@ describe('Trip routes', () => {
 
     it('gets an individual trip by id', () => {
       return request(app)
-        .get('/api/trips')
+        .get('/api/trips/1')
         .expect(200)
         .then(res => {
           expect(res.body).to.be.an('object')
