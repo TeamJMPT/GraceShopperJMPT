@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { fetchSingleTrip } from '../store/trips';
+import EditTrip from './editTrip';
 
 class SingleTrip extends Component {
     componentDidMount(){
@@ -8,6 +10,7 @@ class SingleTrip extends Component {
       }
 
     render() {
+      {console.log("isAdmin in single trip", this.props.isAdmin)}
         let trip = this.props.selectedTrip
         console.log("rendering single trip", trip)
         return (
@@ -18,7 +21,7 @@ class SingleTrip extends Component {
             <h2>Price: {trip.price}</h2>
             <p>Description: {trip.description}</p>
             <button>BOOK NOW</button>
-            <button>Edit</button>
+            {this.props.isAdmin && <EditTrip />}
           </div>
         )
       }
@@ -26,7 +29,8 @@ class SingleTrip extends Component {
 
     const mapState = state => {
       return {
-        selectedTrip: state.selectedTrip
+        selectedTrip: state.selectedTrip,
+        isAdmin: state.user.isAdmin
       }
     }
 

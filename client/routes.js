@@ -9,9 +9,10 @@ import {me} from './store'
 import { fetchAllTrips } from './store/trips'
 import singleTrip from './components/singleTrip';
 
-import addNewTrip from './components/addNewTrip';
+// import addNewTrip from './components/addNewTrip';
 import Home from './components/home';
 import AddNewTrip from './components/addNewTrip';
+import EditTrip from './components/editTrip';
 
 
 /**
@@ -43,6 +44,7 @@ class Routes extends Component {
           }} />)
         }} />
         <Route exact path="/add" component={AddNewTrip} />
+        <Route exact path="/edit" component={EditTrip} />
         {
           isLoggedIn &&
             <Switch>
