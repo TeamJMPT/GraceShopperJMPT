@@ -8,6 +8,9 @@ const Navbar = ({ handleClick, isLoggedIn }) => (
   <div>
 
     <Link to="/"><h1>QUEST</h1></Link>
+    <div className="logo">
+      <img alt="logo" src="images/compass.png" />
+      </div>
     <nav>
         {isLoggedIn ? (
           <div>
@@ -21,13 +24,14 @@ const Navbar = ({ handleClick, isLoggedIn }) => (
             {/* The navbar will show these links before you log in */}
             <div className="container-1">
                <span className="icon"><i className="fa fa-search"></i></span>
-                  <input type="search" id="search" placeholder="Search..." />
+               <input type="search" id="search" placeholder="Search..." />
+               <Link to="/add">Add</Link>
+                <Link to="/trips">Quests</Link>
+                <Link to="/cart">Cart</Link>
+                <Link to="/login">Login</Link>
+                <Link to="/signup">Sign Up</Link>
             </div>
-            <Link to="/add">Add</Link>
-            <Link to="/trips">Quests</Link>
-            <Link to="/cart">Cart</Link>
-            <Link to="/login">Login</Link>
-            <Link to="/signup">Sign Up</Link>
+            
           </div>
         )}
     </nav>
