@@ -5,7 +5,6 @@ import { createNewTrip } from '../store/trips';
 class AddNewTrip extends Component {
     constructor(props) {
         super(props)
-        console.log("props", props)
         this.state = {
             name : '',
             location : '',

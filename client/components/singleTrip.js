@@ -10,7 +10,7 @@ class SingleTrip extends Component {
       }
 
     render() {
-      {console.log("isAdmin in single trip", this.props.isAdmin)}
+      {console.log("Single Trip props", this.props)}
         let trip = this.props.selectedTrip
         console.log("rendering single trip", trip)
         return (
@@ -21,7 +21,7 @@ class SingleTrip extends Component {
             <h2>Price: {trip.price}</h2>
             <p>Description: {trip.description}</p>
             <button>BOOK NOW</button>
-            {this.props.isAdmin && <EditTrip />}
+            {this.props.isAdmin && <EditTrip history={this.props.history}/>}
           </div>
         )
       }
