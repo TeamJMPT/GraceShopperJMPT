@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { fetchSingleTrip } from '../store/trips';
 import axios from 'axios';
+import EditTrip from './editTrip';
 
 class SingleTrip extends Component {
     constructor() {
@@ -46,6 +48,7 @@ class SingleTrip extends Component {
     }
 
     render() {
+      {console.log("Single Trip props", this.props)}
         let trip = this.props.selectedTrip
         console.log("rendering single trip", trip)
         return (
@@ -64,7 +67,7 @@ class SingleTrip extends Component {
                     onChange={this.handleChange} />
               <button>BOOK NOW</button>
             </form>
-            <button>Edit</button>
+            {this.props.isAdmin && <EditTrip history={this.props.history}/>}
           </div>
         )
       }
@@ -72,7 +75,8 @@ class SingleTrip extends Component {
 
     const mapState = state => {
       return {
-        selectedTrip: state.selectedTrip
+        selectedTrip: state.selectedTrip,
+        isAdmin: state.user.isAdmin
       }
     }
 
