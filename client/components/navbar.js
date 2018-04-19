@@ -4,9 +4,9 @@ import {connect} from 'react-redux'
 import {Link} from 'react-router-dom'
 import {logout} from '../store'
 
-const Navbar = ({ handleClick, isLoggedIn }) => (
+const Navbar = ({ handleClick, isLoggedIn, isAdmin }) => (
   <div>
-
+      {console.log("isAdmin?!", isAdmin)}
     <Link to="/"><h1>QUEST</h1></Link>
     <div className="logo">
       <img alt="logo" src="images/compass.png" />
@@ -16,7 +16,7 @@ const Navbar = ({ handleClick, isLoggedIn }) => (
           <div>
             {/* The navbar will show these links after you log in */}
             <input type="search" id="search" placeholder="Search..." />
-            <Link to="/add">Add</Link>
+            {isAdmin && <Link to="/add">Add</Link>}
             <Link to="/trips">Quests</Link>
             <Link to="/cart">Cart</Link>
             <a href="#" onClick={handleClick}>
