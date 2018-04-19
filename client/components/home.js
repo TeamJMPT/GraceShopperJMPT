@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 
 const Home = (props) => {
-    console.log("homepage props: ", props);
+    // console.log("homepage props: ", props);
     return (
         <div>
             <section>

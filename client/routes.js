@@ -34,13 +34,14 @@ class Routes extends Component {
         <Route path="/signup" component={Signup} />
         <Route exact path="/trips" component={Trips} />
         <Route exact path= "/trips/:id" component={singleTrip} />
-        <Route exact path="/trips/category/:id" render={({ match }) => {
+        <Route
+          path="/trips/category/:id" render={({ match }) => {
           return (<Trips where={trip => {
             return trip.categories.some((category) => {
               return category.id == match.params.id
             })
-          }}/>)
-        }}/>
+          }} />)
+        }} />
         <Route exact path="/add" component={AddNewTrip} />
         {
           isLoggedIn &&
