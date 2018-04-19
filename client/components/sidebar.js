@@ -13,27 +13,27 @@ class Sidebar extends Component {
   render() {
     const categories = this.props.categories
         return (
-          // <div className="sidenav">
+           <div className="sidenav">
             <section className="sidebar">
-              <div className="sidebar-header">
-            <h3 href="#">
-              <div>QUEST</div>
-              <i alt="Brand" className="glyphicon glyphicon-comment">
-              </i>
-            </h3 >
-          </div >
-            <h5>Categories:</h5>
-            {
-              categories.map(category => {
-                return (
-                    <Link to={`/trips/category/${category.id}`} key={category.id}>
-                <ul>{category.name}</ul>
-                </Link>
-                )
-              })
-            }
+                <div className="sidebar-header">
+              <h3 href="#">
+                <div>QUEST</div>
+                <i alt="Brand" className="glyphicon glyphicon-comment">
+                </i>
+              </h3 >
+            </div >
+              <h5>Categories:</h5>
+              {
+                categories.map(category => {
+                  return (
+                      <Link to={`/trips/category/${category.id}`} key={category.id}>
+                  <ul>{category.name}</ul>
+                  </Link>
+                  )
+                })
+              }
         </section>
-        // </div>
+        </div>
     )
   }
 }

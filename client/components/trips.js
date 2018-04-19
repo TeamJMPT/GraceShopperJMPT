@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { fetchAllTrips } from '../store/trips';
+import Sidebar from './sidebar';
 
 class Trips extends Component {
 
@@ -17,8 +18,8 @@ class Trips extends Component {
   render() {
     console.log("trips now in trip component", this.props.trips)
     return (
-      <div>
-        {/* <Sidebar /> */}
+      <div className="container">
+        <Sidebar />
         <div className="wrap">
         {
           this.trips().map(trip => {
