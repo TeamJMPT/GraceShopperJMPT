@@ -1,8 +1,9 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import { fetchAllTrips } from '../store/trips'
 
 const Home = (props) => {
-    // console.log("homepage props: ", props);
+    console.log("homepage props: ", props); //empty array
     return (
         <div>
             <section>
@@ -25,4 +26,18 @@ const Home = (props) => {
     )
 }
 
-export default Home
+const mapState = state => {
+    return {
+      trips: state.trips,
+    }
+}
+
+  const mapDispatch = dispatch => {
+   return {
+     getAllTrips: () => {
+       dispatch(fetchAllTrips());
+     }
+   }
+}
+
+  export default connect(mapState, mapDispatch)(Home)
