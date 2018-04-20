@@ -3,13 +3,13 @@ import { connect } from 'react-redux'
 import { fetchAllTrips } from '../store/trips'
 
 const Home = (props) => {
-    console.log("homepage props: ", props); //empty array
     return (
         <div className="home">
             <header className="home-welcome text-center">
                 <div className="home-welcome-content">
                     <div className="container-fluid">
-                        <img className="home-welcome-main-img" src="https://i.imgur.com/mxeb2NK.png" />
+                        <h1 className='home-welcome-title'>Quest</h1>
+                        <img className="main-img" src="/images/photo-1494137319847-a9592a0e73ed.jpeg"  />
                         <h3 className="home-welcome-message">Welcome protagonists!</h3>
                         <h3 className="home-welcome-message">Choose your quest!</h3>
                         <h3 className="home-welcome-message">North or south,</h3>
@@ -60,10 +60,5 @@ const mapState = state => {
        dispatch(fetchAllTrips());
      }
    }
-}
-
-// Home.propTypes = {
-//     trips: React.PropTypes.array.isRequired
-// }
 
   export default connect(mapState, mapDispatch)(Home)
