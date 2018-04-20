@@ -5,6 +5,7 @@ const bodyParser = require('body-parser')
 const compression = require('compression')
 const session = require('express-session')
 const passport = require('passport')
+import 'bootstrap';
 const SequelizeStore = require('connect-session-sequelize')(session.Store)
 const db = require('./db')
 const sessionStore = new SequelizeStore({db})
