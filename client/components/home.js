@@ -20,7 +20,13 @@ const Home = (props) => {
             <hr />
             <section>
                 <h2>Featured Quests</h2>
-                <p>featured quests place holder</p>
+                {props.trips.length &&
+                    <div>
+                        <img src={props.trips[0].imageUrl} />
+                        <h3>{props.trips[0].name}</h3>
+                        <h4>{props.trips[0].price}</h4>
+                    </div>
+                }
             </section>
         </div>
     )
@@ -39,5 +45,9 @@ const mapState = state => {
      }
    }
 }
+
+// Home.propTypes = {
+//     trips: React.PropTypes.array.isRequired
+// }
 
   export default connect(mapState, mapDispatch)(Home)
