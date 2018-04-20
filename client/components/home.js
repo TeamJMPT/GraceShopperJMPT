@@ -22,9 +22,21 @@ const Home = (props) => {
                 <h2>Featured Quests</h2>
                 {props.trips.length &&
                     <div>
-                        <img src={props.trips[0].imageUrl} />
-                        <h3>{props.trips[0].name}</h3>
-                        <h4>{props.trips[0].price}</h4>
+                        <div>
+                            <img src={props.trips[0].imageUrl} />
+                            <h3>{props.trips[0].name}</h3>
+                            <h4>{props.trips[0].price}</h4>
+                        </div>
+                        <div>
+                            <img src={props.trips[1].imageUrl} />
+                            <h3>{props.trips[1].name}</h3>
+                            <h4>{props.trips[1].price}</h4>
+                        </div>
+                        <div>
+                            <img src={props.trips[2].imageUrl} />
+                            <h3>{props.trips[2].name}</h3>
+                            <h4>{props.trips[2].price}</h4>
+                        </div>
                     </div>
                 }
             </section>
