@@ -89,7 +89,7 @@ class AddNewTrip extends Component {
                     />
                 </div>
                 <div>
-                    <button type="submit">Create Trip</button>
+                    <button className='create-trip-btn' type="submit">Create Trip</button>
                 </div>
             </form>
         );

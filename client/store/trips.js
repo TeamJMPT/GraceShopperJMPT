@@ -30,6 +30,10 @@ export function addUpdatedTrip(updatedTrip) {
   return {type: ADD_UPDATED_TRIP, updatedTrip}
 }
 
+export function addToCart(addOrder) {
+  return {type: ADD_TO_CART, addOrder}
+}
+
 //THUNKS
 export const fetchAllTrips = () => {
   return dispatch => {
@@ -81,6 +85,8 @@ export const updateTrip = (updatedTrip, history) => {
       })
   }
 }
+
+// export const addToCart
 
 //REDUCER(S)
 export function tripReducer(trips = [], action) {

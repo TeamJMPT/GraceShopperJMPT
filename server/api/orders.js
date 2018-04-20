@@ -12,18 +12,21 @@ router.get('/', (req, res, next) => {
     .catch(next);
 });
 
-router.get('/:orderId', (req, res, next) => {
-  TripOrder.findAll( {
+router.get('/:id', (req, res, next) => {
+  Order.findAll( {
     where: {
-      orderId: req.params.orderId
-    }
+      id: req.params.id
+    },
+    include: [{
+      model: Trip,
+    }]
   })
     .then(orders => res.send(orders))
     .catch(next);
 });
 
-router.post('/:orderId', (req, res, next) => {
-  TripOrder.create(req.body)
-    .then(newOrder => res.send(newOrder))
-    .catch(next)
-})
+// router.post('/:orderId', (req, res, next) => {
+//   TripOrder.create(req.body)
+//     .then(newOrder => res.send(newOrder))
+//     .catch(next)
+// })
