@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { fetchSingleTrip } from '../store/trips';
-import axios from 'axios';
+import { fetchAllFromCart } from '../store/cart';
+import { postNewItem } from '../store/cart';
 import EditTrip from './editTrip';
 
 class SingleTrip extends Component {
@@ -11,44 +12,42 @@ class SingleTrip extends Component {
       this.state = {
         quantity: '',
       }
-      this.handleSubmit = this.handleSubmit.bind(this)
+      // this.handleSubmit = this.handleSubmit.bind(this)
       this.handleChange = this.handleChange.bind(this)
     }
 
 
     componentDidMount(){
         this.props.getSingleTrip(this.props.match.params.id);
-    }
-
-    postOrder(newOrder) {
-      axios.post('/api/orders/:orderId', newOrder)
-      .then(res => {
-        console.log("RES.DATA:", res.data)
-        return res.data
-      })
-      .then(newOrder => 
-        console.log("New Order Placed! Order: ", newOrder))
+        this.props.getAllFromCart(this.props.user.id);
     }
 
     handleChange(e) {
       this.setState({[e.target.name]: e.target.value})
     }
 
-    handleSubmit(e) {
-      e.preventDefault();
-      let trip = this.props.selectedTrip
-      const addOrder = {
-        quantity: +this.state.quantity,
-        price: trip.price
-      }
-      this.postOrder(newOrder)
-      this.setState({
-        quantity: ''
-      })
-    }
+    // handleSubmit(e) {
+    //   e.preventDefault();
+    //   let trip = this.props.selectedTrip
+    //   const addOrder = {
+    //     quantity: +this.state.quantity,
+    //     price: trip.price
+    //   }
+    //   this.postOrder(newOrder)
+    //   this.setState({
+    //     quantity: ''
+    //   })
+    // }
 
     render() {
-      {console.log("Single Trip props", this.props)}
+      const newItem = {
+        userId: this.props.user.id,
+        orderId: this.props.cart.id,
+        tripId: this.props.selectedTrip.id,
+        quantity: +this.state.quantity,
+        unitPrice: this.props.selectedTrip.price
+      }
+      {console.log("Single Trip user", this.props.user.id)}
         let trip = this.props.selectedTrip
         console.log("rendering single trip", trip)
         return (
@@ -58,16 +57,16 @@ class SingleTrip extends Component {
             <h2>Location: {trip.location}</h2>
             <h2>Price: {trip.price}</h2>
             <p>Description: {trip.description}</p>
-            <form onSubmit={this.handleSubmit}>
+            <form onSubmit={() => {this.props.postNewItem(newItem)}}>
               <label>Quantity</label>
-              <input type='number' 
+              <input type='number'
                     name='quantity'
-                    value={this.state.quantity} 
-                    placeholder='0' 
+                    value={this.state.quantity}
+                    placeholder='0'
                     onChange={this.handleChange} />
               <button type="submit">Add to Cart</button>
             </form>
-            {this.props.isAdmin && <EditTrip history={this.props.history}/>}
+            {this.props.isAdmin && <EditTrip history={this.props.history} />}
           </div>
         )
       }
@@ -76,7 +75,9 @@ class SingleTrip extends Component {
     const mapState = state => {
       return {
         selectedTrip: state.selectedTrip,
-        isAdmin: state.user.isAdmin
+        isAdmin: state.user.isAdmin,
+        cart: state.cart,
+        user: state.user
       }
     }
 
@@ -84,6 +85,12 @@ class SingleTrip extends Component {
      return {
        getSingleTrip: (id) => {
          dispatch(fetchSingleTrip(id));
+       },
+       getAllFromCart: (userId) => {
+         dispatch(fetchAllFromCart(userId));
+       },
+       postNewItem: (newItem) => {
+         dispatch(postNewItem(newItem))
        }
      }
     }

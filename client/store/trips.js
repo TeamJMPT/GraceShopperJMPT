@@ -40,8 +40,8 @@ export const fetchAllTrips = () => {
     axios.get('/api/trips')
       .then(res => res.data)
       .then(trips => {
-        console.log('Got the trips from the db!', trips.map(trip => trip.categories.map(category => category.name)));
-        dispatch(getAllTrips(trips))
+        trips.map(trip => trip.categories.map(category => category.name))
+        return dispatch(getAllTrips(trips))
       })
       .catch(console.error);
   }
@@ -107,6 +107,9 @@ export function singleTripReducer(state = {}, action) {
   switch (action.type) {
     case GET_SINGLE_TRIP:
       return action.selectedTrip
+      //Why doesn't this do what I want???!!??
+    // case ADD_UPDATED_TRIP:
+    //   return action.updatedTrip
     default:
       return state
   }
