@@ -1,0 +1,96 @@
+body {
+    font-family: sans-serif;
+    /* display: flex; */
+    /* box-sizing: border-box; */
+  }
+  
+  a {
+    text-decoration: none;
+  }
+  
+  label {
+    display: block;
+  }
+  
+  nav a {
+    display: inline-block;
+    margin: 1em;
+  }
+  
+  form div {
+    margin: 1em;
+    display: inline-block;
+  }
+  
+  .wrap, .cart-title {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: auto;
+  }
+  .cart-total{
+    justify-content: flex-end;
+    align-self:flex-end;
+    margin-right: 130px;
+  }
+  .trips {
+    flex: 2;
+  }
+  .trips-images{
+    width: 20em;
+    height: 28em;
+  }
+  .main-img{
+    width: 100%;
+    height: 28em;
+  }
+  .logo{
+    width: 10px;
+    height: 20px;
+    margin: 10px 10px 45px 10px;
+  }
+  
+  .container{
+    display: flex
+  }
+  .container-1{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .search{
+    justify-content: flex-start ;
+    margin-right: 63%;
+  }
+  #cart-img{
+    width: 10px;
+  }
+  /* .sidebar{
+    /* flex-shrink: 0; */
+    /* overflow-y: auto;
+     height: 100%;
+      min-width: 100px; */
+    /* flex-grow: 1;  */
+    /* overflow-y: auto; */
+  
+  .sidenav{
+    flex-shrink: 0;
+  
+  }
+  /* .sidenav{
+    height: 100%;
+      width: 160px;
+      position: fixed;
+      z-index: 1;
+      top: 160px;
+      left: 0;
+      background-color: rgb(238, 237, 237);
+      overflow-x: hidden;
+      padding-top: 20px;
+  
+    
+  } */
+  
