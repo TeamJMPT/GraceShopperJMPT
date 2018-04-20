@@ -11,6 +11,7 @@ import SingleTrip from './components/singleTrip';
 import Home from './components/home';
 import AddNewTrip from './components/addNewTrip';
 import EditTrip from './components/editTrip';
+import Cart from './components/cart';
 
 
 
