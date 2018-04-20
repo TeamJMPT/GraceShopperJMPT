@@ -64,7 +64,7 @@ class SingleTrip extends Component {
                     value={this.state.quantity}
                     placeholder='0'
                     onChange={this.handleChange} />
-              <button type="submit">Add to Cart</button>
+              <button className="add-to-cart-btn" type="submit">Add to Cart</button>
             </form>
             {this.props.isAdmin && <EditTrip history={this.props.history} />}
           </div>

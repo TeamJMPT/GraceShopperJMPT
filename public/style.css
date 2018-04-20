@@ -1,7 +1,6 @@
 body {
   font-family: sans-serif;
-  /* display: flex; */
-  /* box-sizing: border-box; */
+
 }
 
 a {
@@ -66,30 +65,56 @@ form div {
   margin-right: 63%;
 }
 #cart-img{
-  width: 10px;
+  width: 30px;
 }
-/* .sidebar{
-  /* flex-shrink: 0; */
-  /* overflow-y: auto;
-   height: 100%;
-    min-width: 100px; */
-  /* flex-grow: 1;  */
-  /* overflow-y: auto; */
 
+.main-img{
+  height: 700px;
+}
+.nav-btn:link {
+  color: black;
+}
+.nav-btn:visited {
+  color: black;
+}
+
+.nav-btn:hover{
+  color: rgb(148, 144, 144);
+}
+.quest{
+  margin: 20px 20px;
+  text-align: center;
+  font-size: 85px;
+  position: absolute;
+  top: 50%;
+  left: 49%;
+  transform: translate(-50%, -50%);
+  color: rgb(238, 221, 186);
+}
 .sidenav{
   flex-shrink: 0;
-
 }
-/* .sidenav{
-  height: 100%;
-    width: 160px;
-    position: fixed;
-    z-index: 1;
-    top: 160px;
-    left: 0;
-    background-color: rgb(238, 237, 237);
-    overflow-x: hidden;
-    padding-top: 20px;
 
-  
+/* Buttons */
+.create-trip-btn, .add-to-cart-btn, .login-btn, .checkout{
+  border: 1px solid rgb(238, 221, 186);
+  color: #0d0e0d;
+  background-color: transparent;
+  transition: all 0.3s ease 0s;
+}
+ 
+.add-to-cart-btn:hover {
+  background:rgb(238, 221, 186);
+}
+.create-trip-btn:hover {
+  background:rgb(238, 221, 186);
+}
+.login-btn:hover {
+  background:rgb(238, 221, 186);
+}
+.checkout:hover {
+  background:rgb(238, 221, 186);
+}
+/* .nav-panel{
+  background-color: #eee;
 } */
