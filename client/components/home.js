@@ -7,17 +7,18 @@ const Home = (props) => {
     return (
         <div>
             <section>
-                <img className="main-img"src="https://i.imgur.com/mxeb2NK.png" width="50%" height="50%" align="center" />
-                <p align="center">Welcome protagonists!</p>
+                <h1 className='quest'>Quest</h1>
+                <img className="main-img" src="/images/photo-1494137319847-a9592a0e73ed.jpeg"  />
+                {/* <p align="center">Welcome protagonists!</p>
                 <p align="center">Choose your quest!</p>
                 <p align="center">North or south,</p>
                 <p align="center">east or west.</p>
                 <p align="center">Go on an adventure.</p>
                 <p align="center">Make new friends.</p>
                 <p align="center">You'll wish this</p>
-                <p align="center">journey never ends.</p>
+                <p align="center">journey never ends.</p> */}
             </section>
-            <hr />
+            {/* <hr /> */}
             <section>
                 <h2>Featured Quests</h2>
                 {props.trips.length &&
