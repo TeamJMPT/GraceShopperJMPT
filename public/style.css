@@ -22,12 +22,18 @@ form div {
   display: inline-block;
 }
 
-.wrap {
+.wrap, .cart-title {
   display: flex;
   width: 100%;
   height: 100%;
   flex-wrap: wrap;
-  
+  justify-content: center;
+  margin: auto;
+}
+.cart-total{
+  justify-content: flex-end;
+  align-self:flex-end;
+  margin-right: 130px;
 }
 .trips {
   flex: 2;
@@ -48,6 +54,19 @@ form div {
 
 .container{
   display: flex
+}
+.container-1{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.search{
+  justify-content: flex-start ;
+  margin-right: 63%;
+}
+#cart-img{
+  width: 10px;
 }
 /* .sidebar{
   /* flex-shrink: 0; */

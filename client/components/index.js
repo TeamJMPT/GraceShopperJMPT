@@ -5,5 +5,9 @@
  */
 export {default as Navbar} from './navbar'
 export {default as UserHome} from './user-home'
+export {default as Cart} from './cart'
 export {default as Trips} from './trips'
+export {default as AddNewTrip} from './addNewTrip'
+export {default as Home} from './home'
+export {default as SingleTrip} from './singleTrip'
 export {Login, Signup} from './auth-form'
