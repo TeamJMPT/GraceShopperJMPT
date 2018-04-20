@@ -18,7 +18,6 @@ const Home = (props) => {
                 <p align="center">You'll wish this</p>
                 <p align="center">journey never ends.</p> */}
             </section>
-            {/* <hr /> */}
             <section>
                 <h2>Featured Quests</h2>
                 {props.trips.length &&
