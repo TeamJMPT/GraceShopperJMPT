@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { fetchAllTrips } from '../store/trips'
+export default connect(mapState, mapDispatch)(Home)
 
 const Home = (props) => {
     return (
@@ -61,4 +62,3 @@ const mapState = state => {
      }
    }
 
-  export default connect(mapState, mapDispatch)(Home)
