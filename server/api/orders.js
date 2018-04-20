@@ -3,7 +3,11 @@ const {Trip, Order, TripOrder} = require('../db/models')
 module.exports = router
 
 router.get('/', (req, res, next) => {
-  TripOrder.findAll()
+  Order.findAll({
+    include: [{
+      model: Trip,
+    }]
+  })
     .then(orders => res.send(orders))
     .catch(next);
 });
