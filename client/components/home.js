@@ -3,39 +3,43 @@ import { connect } from 'react-redux'
 import { fetchAllTrips } from '../store/trips'
 
 const Home = (props) => {
-    console.log("homepage props: ", props); //empty array
     return (
-        <div>
-            <section>
-                <h1 className='quest'>Quest</h1>
-                <img className="main-img" src="/images/photo-1494137319847-a9592a0e73ed.jpeg"  />
-                {/* <p align="center">Welcome protagonists!</p>
-                <p align="center">Choose your quest!</p>
-                <p align="center">North or south,</p>
-                <p align="center">east or west.</p>
-                <p align="center">Go on an adventure.</p>
-                <p align="center">Make new friends.</p>
-                <p align="center">You'll wish this</p>
-                <p align="center">journey never ends.</p> */}
-            </section>
-            <section>
+        <div className="home">
+            <header className="home-welcome text-center">
+                <div className="home-welcome-content">
+                    <div className="container-fluid">
+                        <h1 className='home-welcome-title'>Quest</h1>
+                        <img className="main-img" src="/images/photo-1494137319847-a9592a0e73ed.jpeg"  />
+                        <h3 className="home-welcome-message">Welcome protagonists!</h3>
+                        <h3 className="home-welcome-message">Choose your quest!</h3>
+                        <h3 className="home-welcome-message">North or south,</h3>
+                        <h3 className="home-welcome-message">east or west.</h3>
+                        <h3 className="home-welcome-message">Go on an adventure.</h3>
+                        <h3 className="home-welcome-message">Make new friends.</h3>
+                        <h3 className="home-welcome-message">You'll wish this</h3>
+                        <h3 className="home-welcome-message">journey never ends.</h3>
+                    </div>
+                </div>
+            </header>
+            <hr />
+            <section className="row">
                 <h2>Featured Quests</h2>
                 {props.trips.length &&
                     <div>
                         <div>
                             <img src={props.trips[0].imageUrl} />
-                            <h3>{props.trips[0].name}</h3>
-                            <h4>{props.trips[0].price}</h4>
+                            <h3>{props.trips[0].location}</h3>
+                            <h4>${props.trips[0].price}</h4>
                         </div>
                         <div>
                             <img src={props.trips[1].imageUrl} />
-                            <h3>{props.trips[1].name}</h3>
-                            <h4>{props.trips[1].price}</h4>
+                            <h3>{props.trips[1].location}</h3>
+                            <h4>${props.trips[1].price}</h4>
                         </div>
                         <div>
                             <img src={props.trips[2].imageUrl} />
-                            <h3>{props.trips[2].name}</h3>
-                            <h4>{props.trips[2].price}</h4>
+                            <h3>{props.trips[2].location}</h3>
+                            <h4>${props.trips[2].price}</h4>
                         </div>
                     </div>
                 }
@@ -56,10 +60,5 @@ const mapState = state => {
        dispatch(fetchAllTrips());
      }
    }
-}
-
-// Home.propTypes = {
-//     trips: React.PropTypes.array.isRequired
-// }
 
   export default connect(mapState, mapDispatch)(Home)

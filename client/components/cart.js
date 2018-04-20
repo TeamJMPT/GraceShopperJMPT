@@ -2,26 +2,44 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import Sidebar from './sidebar';
+import { fetchAllFromCart } from '../store/cart';
 
- const Cart = props => {
+ class Cart extends Component {
+     componentDidMount() {
+         this.props.getAllFromCart();
+     }
 
-    return(
-        <div className="container">
-            <Sidebar />
-            <div className="cart-title">
-            <h2>Your Cart</h2>
+     render() {
+        console.log('Cart props: ', this.props)
+        return(
+            <div className="container">
+                <Sidebar />
+                <div className="cart-title">
+                <h2>Your Cart</h2>
+                </div>
+                <div className="cart-total">
+                <h2>Total:</h2>
+                <button>Checkout</button>
+                </div>
             </div>
-            <div className="cart-total">
-            <h2>Total:</h2>
-            <button>Checkout</button>
-            </div>
-        </div>
-    )
-}
+        )
+     }
+ }
+
+
+
 const mapState = state => {
     return {
-        state: state
+        orders: state.orders
     }
 }
 
-export default connect(mapState)(Cart);
+const mapDispatch = dispatch => {
+    return {
+        getAllFromCart: () => {
+            dispatch(fetchAllFromCart());
+        }
+    }
+}
+
+export default connect(mapState, mapDispatch)(Cart);

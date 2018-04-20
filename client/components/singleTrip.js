@@ -9,7 +9,7 @@ class SingleTrip extends Component {
     constructor() {
       super();
       this.state = {
-        quantity: ''
+        quantity: '',
       }
       this.handleSubmit = this.handleSubmit.bind(this)
       this.handleChange = this.handleChange.bind(this)
@@ -37,7 +37,7 @@ class SingleTrip extends Component {
     handleSubmit(e) {
       e.preventDefault();
       let trip = this.props.selectedTrip
-      const newOrder = {
+      const addOrder = {
         quantity: +this.state.quantity,
         price: trip.price
       }
@@ -65,7 +65,7 @@ class SingleTrip extends Component {
                     value={this.state.quantity} 
                     placeholder='0' 
                     onChange={this.handleChange} />
-              <button>BOOK NOW</button>
+              <button type="submit">Add to Cart</button>
             </form>
             {this.props.isAdmin && <EditTrip history={this.props.history}/>}
           </div>
