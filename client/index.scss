@@ -93,4 +93,22 @@ body {
   
     
   } */
-  
+
+header.home-welcome {
+  position: relative;
+  overflow: hidden;
+  padding-top: calc(7em + 72px);
+  padding-bottom: 7em;
+  background: linear-gradient(0deg, $secondary 0%, $primary 100%);
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-attachment: scroll;
+  background-size: cover;
+  .home-welcome-content {
+    z-index: 1;
+    position: relative;
+    .home-welcome-message {
+      font-size: 2rem;
+    }
+  }
+}

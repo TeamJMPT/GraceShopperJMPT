@@ -1,0 +1,7 @@
+home
+    home-welcome
+        home-welcome-content
+            container-fluid
+                home-welcome-main-img
+                home-welcome-message
+
