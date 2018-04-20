@@ -7,7 +7,11 @@ import Trips from './components/trips'
 import {me} from './store'
 
 import { fetchAllTrips } from './store/trips'
-import {SingleTrip, Cart, Home, AddNewTrip } from './components';
+import singleTrip from './components/singleTrip';
+import Home from './components/home';
+import AddNewTrip from './components/addNewTrip';
+import EditTrip from './components/editTrip';
+
 
 
 /**
@@ -40,6 +44,7 @@ class Routes extends Component {
           }} />)
         }} />
         <Route exact path="/add" component={AddNewTrip} />
+        <Route exact path="/edit" component={EditTrip} />
         {
           isLoggedIn &&
             <Switch>
