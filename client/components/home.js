@@ -7,8 +7,8 @@ const Home = (props) => {
         <div className="home">
             <header className="home-welcome text-center">
                 <div className="home-welcome-content">
-                    <div className="container-fluid">
-                        <h1 className='home-welcome-title'>Quest</h1>
+                    <div className="no-gutters">
+                        <h1 className="home-welcome-title">Quest</h1>
                         <img className="main-img" src="/images/photo-1494137319847-a9592a0e73ed.jpeg"  />
                         <h3 className="home-welcome-message">Welcome protagonists!</h3>
                         <h3 className="home-welcome-message">Choose your quest!</h3>
@@ -20,7 +20,7 @@ const Home = (props) => {
                         <h3 className="home-welcome-message">journey never ends.</h3>
                     </div>
                 </div>
-            </header>
+    </header>
             <hr />
             <section className="row">
                 <h2>Featured Quests</h2>
@@ -50,7 +50,7 @@ const Home = (props) => {
 
 const mapState = state => {
     return {
-      trips: state.trips,
+      trips: state.trips
     }
 }
 
@@ -60,5 +60,6 @@ const mapState = state => {
        dispatch(fetchAllTrips());
      }
    }
+}
 
-  export default connect(mapState, mapDispatch)(Home)
+export default connect(mapState, mapDispatch)(Home);
