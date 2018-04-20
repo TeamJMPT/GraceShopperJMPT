@@ -15,11 +15,13 @@ import Sidebar from './sidebar';
             <h2>Total:</h2>
             <button>Checkout</button>
             </div>
-        </div>    
+        </div>
     )
 }
 const mapState = state => {
-
+    return {
+        state: state
+    }
 }
 
 export default connect(mapState)(Cart);

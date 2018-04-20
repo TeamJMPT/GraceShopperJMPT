@@ -7,10 +7,11 @@ import Trips from './components/trips'
 import {me} from './store'
 
 import { fetchAllTrips } from './store/trips'
-import singleTrip from './components/singleTrip';
+import SingleTrip from './components/singleTrip';
 import Home from './components/home';
 import AddNewTrip from './components/addNewTrip';
 import EditTrip from './components/editTrip';
+import Cart from './components/cart';
 
 
 
