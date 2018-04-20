@@ -1,7 +1,6 @@
 body {
   font-family: sans-serif;
-  /* display: flex; */
-  /* box-sizing: border-box; */
+
 }
 
 a {
@@ -96,3 +95,26 @@ form div {
   flex-shrink: 0;
 }
 
+/* Buttons */
+.create-trip-btn, .add-to-cart-btn, .login-btn, .checkout{
+  border: 1px solid rgb(238, 221, 186);
+  color: #0d0e0d;
+  background-color: transparent;
+  transition: all 0.3s ease 0s;
+}
+ 
+.add-to-cart-btn:hover {
+  background:rgb(238, 221, 186);
+}
+.create-trip-btn:hover {
+  background:rgb(238, 221, 186);
+}
+.login-btn:hover {
+  background:rgb(238, 221, 186);
+}
+.checkout:hover {
+  background:rgb(238, 221, 186);
+}
+/* .nav-panel{
+  background-color: #eee;
+} */

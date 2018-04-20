@@ -19,7 +19,7 @@ import { fetchAllFromCart } from '../store/cart';
                 </div>
                 <div className="cart-total">
                 <h2>Total:</h2>
-                <button>Checkout</button>
+                <button className="checkout">Checkout</button>
                 </div>
             </div>
         )
