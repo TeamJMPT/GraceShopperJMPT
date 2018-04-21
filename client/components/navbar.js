@@ -9,7 +9,6 @@ const Navbar = ({ handleClick, isLoggedIn, isAdmin }) => (
     <div className="logo">
     <Link to="/"><img alt="logo" src="/images/compass.png" /></Link>
     </div>
-
     <nav>
       {isLoggedIn ? (
         <div>
@@ -46,7 +45,8 @@ const Navbar = ({ handleClick, isLoggedIn, isAdmin }) => (
  */
 const mapState = state => {
   return {
-    isLoggedIn: !!state.user.id
+    isLoggedIn: !!state.user.id,
+    isAdmin: state.user.isAdmin
   }
 }
 
