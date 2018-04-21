@@ -9,27 +9,30 @@ const Navbar = ({ handleClick, isLoggedIn, isAdmin }) => (
     <div className="logo">
     <Link to="/"><img alt="logo" src="/images/compass.png" /></Link>
     </div>
-    
     <nav>
-        {isLoggedIn ? (
-          <div>
-            {/* The navbar will show these links after you log in */}
-            <a href="#" onClick={handleClick}>
-              Logout
+      {isLoggedIn ? (
+        <div>
+          {/* The navbar will show these links after you log in */}
+          <span className="icon"><i className="fa fa-search"></i></span>
+          <input className="search" type="search" id="search" placeholder="Search..." />
+          {isAdmin && <Link className='nav-btn' to="/add">Add</Link>}
+          <Link className='nav-btn' to="/trips">Quests</Link>
+          <Link className='nav-btn' to="/cart"><img id="cart-img" alt="logo" src="/images/luggage.png" /></Link>
+          <a className='nav-btn' href="#" onClick={handleClick}>
+            Logout
             </a>
-          </div>
-        ) : (
+        </div>
+      ) : (
           <div>
             {/* The navbar will show these links before you log in */}
             <div className="container-1">
                <input className="search" type="search" id="search"  placeholder="Search..." />
-               <Link className='nav-btn' to="/add">Add</Link>
                 <Link className='nav-btn' to="/trips">Quests</Link>
                 <Link className='nav-btn' to="/login">Login</Link>
                 <Link  className='nav-btn' to="/signup">Sign Up</Link>
                 <Link className='nav-btn' to="/cart"><img id="cart-img" alt="logo" src="/images/luggage.png" /></Link>
             </div>
-            
+
           </div>
         )}
     </nav>
@@ -42,7 +45,8 @@ const Navbar = ({ handleClick, isLoggedIn, isAdmin }) => (
  */
 const mapState = state => {
   return {
-    isLoggedIn: !!state.user.id
+    isLoggedIn: !!state.user.id,
+    isAdmin: state.user.isAdmin
   }
 }
 
