@@ -18,7 +18,7 @@ export function addToCart(newItem) {
 //THUNKS
 export const fetchAllFromCart = (userId) => {
     return dispatch => {
-      axios.get(`/api/orders/${userId}`)
+      axios.get(`/api/cart/${userId}`)
         .then(res => {
           console.log('Coming back with the data!', res.data)
           return res.data}
@@ -30,9 +30,10 @@ export const fetchAllFromCart = (userId) => {
     }
 }
 
+
 export const postNewItem = (newItem) => {
     return dispatch => {
-       axios.post(`/api/orders/${newItem.userId}`, newItem)
+       axios.post(`/api/cart/${newItem.userId}`, newItem)
       .then(res => {
         console.log("RES.DATA:", res.data)
         return res.data

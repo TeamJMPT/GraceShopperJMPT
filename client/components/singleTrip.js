@@ -2,8 +2,7 @@ import React, { Component } from 'react';
 // import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { fetchSingleTrip } from '../store/trips';
-import { fetchAllFromCart } from '../store/cart';
-import { postNewItem } from '../store/cart';
+import { fetchAllFromCart, postNewItem } from '../store/cart';
 import EditTrip from './editTrip';
 
 class SingleTrip extends Component {
@@ -41,13 +40,14 @@ class SingleTrip extends Component {
 
     render() {
       const newItem = {
-        userId: this.props.user.id,
-        orderId: this.props.cart.id,
+        userId: +this.props.user.id,
+        // orderId: this.props.cart.id,
         tripId: this.props.selectedTrip.id,
         quantity: +this.state.quantity,
         unitPrice: this.props.selectedTrip.price
       }
       {console.log("Single Trip user", this.props.user.id)}
+      console.log("SINGLE TRIP PROPS!!", this.props )
         let trip = this.props.selectedTrip
         console.log("rendering single trip", trip)
         return (
@@ -57,13 +57,16 @@ class SingleTrip extends Component {
             <h2>Location: {trip.location}</h2>
             <h2>Price: {trip.price}</h2>
             <p>Description: {trip.description}</p>
-            <form onSubmit={() => {this.props.postNewItem(newItem)}}>
+            <form onSubmit={(evt) => {this.props.addToCart(newItem, evt)}}>
               <label>Quantity</label>
               <input type='number'
                     name='quantity'
                     value={this.state.quantity}
                     placeholder='0'
                     onChange={this.handleChange} />
+                    {
+                      (this.state.quantity && this.state.quantity < 0) && <div className='alert alert-warning' style={{color:'red'}}>Please enter a valid quantity!</div>
+                    }
               <button className="add-to-cart-btn" type="submit">Add to Cart</button>
             </form>
             {this.props.isAdmin && <EditTrip history={this.props.history} />}
@@ -89,7 +92,8 @@ class SingleTrip extends Component {
        getAllFromCart: (userId) => {
          dispatch(fetchAllFromCart(userId));
        },
-       postNewItem: (newItem) => {
+       addToCart: (newItem, evt) => {
+         evt.preventDefault()
          dispatch(postNewItem(newItem))
        }
      }

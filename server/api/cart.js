@@ -15,7 +15,7 @@ router.get('/', (req, res, next) => {
 router.get('/:userId', (req, res, next) => {
     Order.findAll( {
         where: {
-        userId: req.params.userId
+        userId: +req.params.userId
         },
         include: [{
         model: Trip
@@ -26,8 +26,8 @@ router.get('/:userId', (req, res, next) => {
 });
 
 router.post('/:userId', (req, res, next) => {
-    Order.createOrFind({
-        where: {id: req.params.orderId},
+    Order.create({
+        where: {id: +req.params.userId},
         include: [{model: Trip}]
     }, req.body)
         .then(newOrder => res.send(newOrder))

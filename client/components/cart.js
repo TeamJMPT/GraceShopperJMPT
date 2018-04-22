@@ -10,7 +10,7 @@ import { fetchAllFromCart } from '../store/cart';
      }
 
      render() {
-         console.log("CART!", this.props.cart)
+        console.log("CART!", this.props.cart)
         return (
             <div className="container">
                 <Sidebar />
@@ -20,7 +20,7 @@ import { fetchAllFromCart } from '../store/cart';
                 {
                     this.props.cart.map(item => {
                         return item.trips.map(trip => {
-                            return <ul key={trip.id}>{trip.name}, {trip.location}, {trip.tripOrder.quantity}</ul>
+                            return <ul key={trip.id}>{trip.name}, {trip.location}, {trip.cart.quantity}</ul>
                         })
                     })
                 }
