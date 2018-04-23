@@ -58,10 +58,12 @@ class Trips extends Component {
           (this.trips().filter(searchingFor(this.state.search)).map(trip => {
             return (
               <div className="trips"  key={trip.id}>
+              <Link to={`/trips/${trip.id}`} className='trips'>
                 <img className="trips-images"src={trip.imageUrl} />
-                <Link to={`/trips/${trip.id}`} className='trips'><h3>{trip.name}</h3></Link>
+                <h3>{trip.name}</h3>
                 <h5>{trip.location}</h5>
                 <h5>{`$${trip.price}`}</h5>
+              </Link>
               </div>
             )
           })) :<p>No Match</p>
@@ -71,10 +73,12 @@ class Trips extends Component {
           this.trips().map(trip => {
             return (
               <div className="trips"  key={trip.id}>
+              <Link to={`/trips/${trip.id}`} className='trips'>
                 <img className="trips-images"src={trip.imageUrl} />
-                <Link to={`/trips/${trip.id}`} className='trips'><h3>{trip.name}</h3></Link>
+                <h3>{trip.name}</h3>
                 <h5>{trip.location}</h5>
                 <h5>{`$${trip.price}`}</h5>
+              </Link>
               </div>
             )
           })
