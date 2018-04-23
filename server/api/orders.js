@@ -2,15 +2,18 @@ const router = require('express').Router()
 const {Trip, Order } = require('../db/models')
 module.exports = router
 
-// router.get('/', (req, res, next) => {
-//   Order.findAll({
-//     include: [{
-//       model: Trip
-//     }]
-//   })
-//     .then(orders => res.send(orders))
-//     .catch(next);
-// });
+//utilize these routes when we are actually checking out??
+
+//this route may be useful for an admin who wants to see all orders
+router.get('/', (req, res, next) => {
+  Order.findAll({
+    include: [{
+      model: Trip
+    }]
+  })
+    .then(orders => res.send(orders))
+    .catch(next);
+});
 
 router.get('/:userId', (req, res, next) => {
   Order.findAll( {
@@ -32,9 +35,4 @@ router.post('/:userId', (req, res, next) => {
   }, req.body)
     .then(newOrder => res.send(newOrder))
     .catch(next)
-})
-
-router.get('/', (req, res, next) => {
-  req.session.cart = []
-  console.log("here is session!", req.session)
 })

@@ -6,7 +6,7 @@ import { fetchAllFromCart } from '../store/cart';
 
  class Cart extends Component {
      componentDidMount() {
-         this.props.getAllFromCart(this.props.state.user.id);
+         this.props.getAllFromCart();
      }
 
      render() {
@@ -44,8 +44,8 @@ const mapState = state => {
 
 const mapDispatch = (dispatch) => {
     return {
-        getAllFromCart: (userId) => {
-            dispatch(fetchAllFromCart(userId));
+        getAllFromCart: () => {
+            dispatch(fetchAllFromCart());
         }
     }
 }
