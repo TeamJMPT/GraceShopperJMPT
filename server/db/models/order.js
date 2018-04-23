@@ -23,6 +23,8 @@ const Order = db.define('order', {
     }
 })
 
+// Order.beforeSave((order) => {
+
+// })
+
 module.exports = Order
-
-

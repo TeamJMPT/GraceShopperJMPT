@@ -57,58 +57,6 @@ const createApp = () => {
   app.use(passport.initialize())
   app.use(passport.session())
 
-  // //middleware that sets req.cart
-  // app.use('/', (req, res, next) => {
-  //   console.log("session start: ", req.session);
-  //   //if there's already a cart on the session?, go to next middleware
-  //   if (req.body.cart) {
-  //     console.log("session with a cart: ", req.session)
-  //     next()
-  //   }
-  //   //if req.session.cartId is set, then load that cart as req.cart, and next()
-  //   else if (req.session.cartId) {
-  //     //In any case, put the cartId on req.session.cartId
-  //     req.body.cart.id = req.session.cartId
-  //     console.log("session with ",req.session)
-  //     next()
-  //   }
-  //   //create cart or find user who has cart
-  //   else {
-  //     //    - Is anyone logged in? (is req.user a thing?)
-  //     if (req.session.user) {//logged in
-  //       //If so, findOrCreate a cart for them
-  //       Cart.findOrCreate({
-  //         where: {
-  //           userId: +req.session.user.id
-  //         }
-  //       })
-  //       .spread((cart, created) => {
-  //         if (created) {
-  //           //In any case, put the cartId on req.session.cartId
-  //           req.body.cart = cart
-  //           req.session.cartId = cart.id
-  //         }
-  //       })
-  //     }
-  //     if (!req.session.user) {//not logged in
-  //       //Otherwise, findOrCreate a cart owned by nobody
-  //       Cart.findOrCreate({
-  //         where: {
-  //           userId: null
-  //         }
-  //       })
-  //       .spread((cart, created) => {
-  //         if (created) {
-  //           //In any case, put the cartId on req.session.cartId
-  //           req.body.cart = cart;
-  //           req.session.cartId = cart.id
-  //         }
-  //       })
-  //     }
-  //     next()
-  //   }
-  // })
-
   app.get('/zsession', (req, res) => res.send(req.session))
 
   // auth and api routes
