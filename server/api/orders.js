@@ -26,10 +26,8 @@ router.get('/:userId', (req, res, next) => {
 });
 
 router.post('/:userId', (req, res, next) => {
-  Order.create({
-    where: {id: req.params.orderId},
-    include: [{model: Trip}]
-  }, req.body)
+    console.log("REQ.BODY!!", req.body)
+  Order.create(req.body)
     .then(newOrder => res.send(newOrder))
     .catch(next)
 })

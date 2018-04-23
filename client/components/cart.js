@@ -19,9 +19,9 @@ class Cart extends Component {
                 </div>
                 {
                     this.props.cart.map(item => {
-                        return item.trips.map(trip => {
-                            return <ul key={trip.id}>{trip.name}, {trip.location}, {trip.cart.quantity}</ul>
-                        })
+                        return (
+                            <ul key={item.id}>{item.quantity}, {item.unitPrice}. {item.subTotal}</ul>
+                        )
                     })
                 }
                 <div className="cart-total">
@@ -51,3 +51,7 @@ const mapDispatch = (dispatch) => {
 }
 
 export default connect(mapState, mapDispatch)(Cart);
+
+// item.trips.map(trip => {
+//     return <ul key={trip.id}>{trip.name}, {trip.location}, {trip.cart.quantity}</ul>
+// })
