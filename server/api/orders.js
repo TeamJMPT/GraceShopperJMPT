@@ -2,15 +2,15 @@ const router = require('express').Router()
 const {Trip, Order } = require('../db/models')
 module.exports = router
 
-// router.get('/', (req, res, next) => {
-//   Order.findAll({
-//     include: [{
-//       model: Trip
-//     }]
-//   })
-//     .then(orders => res.send(orders))
-//     .catch(next);
-// });
+router.get('/', (req, res, next) => {
+  Order.findAll({
+    include: [{
+      model: Trip
+    }]
+  })
+    .then(orders => res.send(orders))
+    .catch(next);
+});
 
 router.get('/:userId', (req, res, next) => {
   Order.findAll( {
@@ -26,7 +26,7 @@ router.get('/:userId', (req, res, next) => {
 });
 
 router.post('/:userId', (req, res, next) => {
-  Order.createOrFind({
+  Order.create({
     where: {id: req.params.orderId},
     include: [{model: Trip}]
   }, req.body)
@@ -34,7 +34,3 @@ router.post('/:userId', (req, res, next) => {
     .catch(next)
 })
 
-router.get('/', (req, res, next) => {
-  req.session.cart = []
-  console.log("here is session!", req.session)
-})
