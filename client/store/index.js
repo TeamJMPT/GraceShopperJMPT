@@ -6,6 +6,7 @@ import user from './user'
 import {tripReducer, singleTripReducer, searchReducer} from './trips';
 import categoriesReducer from './categories';
 import { cartReducer } from './cart';
+import {checkoutReducer} from './checkout';
 
 const reducer = combineReducers({user, trips: tripReducer, selectedTrip: singleTripReducer, categories: categoriesReducer, cart: cartReducer, search: searchReducer})
 const middleware = composeWithDevTools(applyMiddleware(

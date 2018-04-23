@@ -162,8 +162,9 @@ header.home-welcome {
 .featured-quest-img {
   max-width: 100%;
   height: auto;
+}
 
-  .nav-item{
+.nav-item{
   text-align: right;
   margin-top: -20px;
 }
