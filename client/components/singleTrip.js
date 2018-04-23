@@ -52,7 +52,7 @@ class SingleTrip extends Component {
             <p>Description: {trip.description}</p>
             {
               trip.isAvailable ?
-                <form onSubmit={(evt) => {this.props.addToCart(newItem, evt)}}>
+                (<form onSubmit={(evt) => {this.props.addToCart(newItem, evt)}}>
                   <label>Quantity</label>
                   <input type='number'
                         name='quantity'
@@ -63,7 +63,8 @@ class SingleTrip extends Component {
                           (this.state.quantity && this.state.quantity < 0) && <div className='alert alert-warning' style={{color:'red'}}>Please enter a valid quantity!</div>
                         }
                   <button className="add-to-cart-btn" type="submit">Add to Cart</button>
-                </form>) :
+                </form>)
+                :
                 <span>Currently Unavailable</span>
             }
             {this.props.isAdmin &&
