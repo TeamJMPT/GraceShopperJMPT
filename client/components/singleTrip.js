@@ -25,18 +25,6 @@ class SingleTrip extends Component {
       this.setState({[e.target.name]: e.target.value})
     }
 
-    // handleSubmit(e) {
-    //   e.preventDefault();
-    //   let trip = this.props.selectedTrip
-    //   const addOrder = {
-    //     quantity: +this.state.quantity,
-    //     price: trip.price
-    //   }
-    //   this.postOrder(newOrder)
-    //   this.setState({
-    //     quantity: ''
-    //   })
-    // }
 
     render() {
       const newItem = {
