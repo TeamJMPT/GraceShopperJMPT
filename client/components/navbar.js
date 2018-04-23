@@ -11,10 +11,8 @@ const Navbar = ({ handleClick, isLoggedIn, isAdmin }) => (
     </div>
     <nav>
       {isLoggedIn ? (
-        <div>
+        <div className="nav-item">
           {/* The navbar will show these links after you log in */}
-          <span className="icon"><i className="fa fa-search"></i></span>
-          <input className="search" type="search" id="search" placeholder="Search..." />
           {isAdmin && <Link className='nav-btn' to="/add">Add</Link>}
           <Link className='nav-btn' to="/trips">Quests</Link>
           <Link className='nav-btn' to="/cart"><img id="cart-img" alt="logo" src="/images/luggage.png" /></Link>

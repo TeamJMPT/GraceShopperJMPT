@@ -142,3 +142,8 @@ header.home-welcome {
   margin: 0;
   padding: 0;
 }
+
+.nav-item{
+  text-align: right;
+  margin-top: -20px;
+}
