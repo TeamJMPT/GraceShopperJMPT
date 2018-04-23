@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 // import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { fetchSingleTrip } from '../store/trips';
-import { fetchAllFromCart } from '../store/cart';
-import { postNewItem } from '../store/cart';
+import { fetchAllFromCart, postNewItem } from '../store/cart';
+// import { getUser } from '../store/user';
 import EditTrip from './editTrip';
 
 class SingleTrip extends Component {
@@ -20,6 +20,8 @@ class SingleTrip extends Component {
     componentDidMount(){
         this.props.getSingleTrip(this.props.match.params.id);
         this.props.getAllFromCart(this.props.user.id);
+        // this.props.getUser(this.props.match.params.user)
+        // console.log(this.props.user)
     }
 
     handleChange(e) {
@@ -47,17 +49,19 @@ class SingleTrip extends Component {
         quantity: +this.state.quantity,
         unitPrice: this.props.selectedTrip.price
       }
-      {console.log("Single Trip user", this.props.user.id)}
+      // console.log("Single Trip user", this.props.isAdmin)
         let trip = this.props.selectedTrip
-        console.log("rendering single trip", trip)
+        // console.log("rendering single trip", trip)
         return (
           <div>
             <img src={trip.imageUrl} />
             <h1>{trip.name}</h1>
             <h2>Location: {trip.location}</h2>
-            <h2>Price: {trip.price}</h2>
+            <h2>Price: ${trip.price}</h2>
             <p>Description: {trip.description}</p>
-            <form onSubmit={() => {this.props.postNewItem(newItem)}}>
+            {
+              trip.isAvailable ?
+              (<form onSubmit={() => {this.props.postNewItem(newItem)}}>
               <label>Quantity</label>
               <input type='number'
                     name='quantity'
@@ -65,8 +69,14 @@ class SingleTrip extends Component {
                     placeholder='0'
                     onChange={this.handleChange} />
               <button className="add-to-cart-btn" type="submit">Add to Cart</button>
-            </form>
-            {this.props.isAdmin && <EditTrip history={this.props.history} />}
+            </form>) :
+            <span>Currently Unavailable</span>
+            }
+            {this.props.isAdmin &&
+              <div>
+                <h6>{trip.inventory} left!</h6>
+                <EditTrip history={this.props.history} />
+              </div>}
           </div>
         )
       }
@@ -91,7 +101,10 @@ class SingleTrip extends Component {
        },
        postNewItem: (newItem) => {
          dispatch(postNewItem(newItem))
-       }
+       },
+      //  getUser: (user) => {
+      //    dispatch(getUser(user))
+      //  }
      }
     }
 

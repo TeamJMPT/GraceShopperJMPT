@@ -1,6 +1,6 @@
 const Sequelize = require('sequelize')
 const db = require('../db')
-// const Category = require('./category')
+const Category = require('./category')
 
 const Trip = db.define('trip', {
     name: {
@@ -22,14 +22,25 @@ const Trip = db.define('trip', {
     description: {
         type: Sequelize.TEXT,
     },
-    // },
-    // {
-    // defaultScope: {
-    //     include: [
-    //         {model: Category }
-    //     ]
-    // }
-})
+    inventory: {
+        type: Sequelize.INTEGER,
+        defaultValue: 50
+    },
+    isAvailable: {
+        type: Sequelize.VIRTUAL,
+        get(){
+            return this.inventory !== 0
+        }
+    }
+}
+// {
+//     defaultScope: {
+//         include: [
+//             {model: Category }
+//         ]
+//     }
+// }
+)
 
 
 module.exports = Trip
