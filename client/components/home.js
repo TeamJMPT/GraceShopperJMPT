@@ -9,7 +9,6 @@ const Home = (props) => {
                 <div className="home-welcome-content">
                     <div className="no-gutters">
                         <h1 className="home-welcome-title">Quest</h1>
-                        <img className="main-img" src="/images/photo-1494137319847-a9592a0e73ed.jpeg"  />
                         <h3 className="home-welcome-message">Welcome protagonists!</h3>
                         <h3 className="home-welcome-message">Choose your quest!</h3>
                         <h3 className="home-welcome-message">North or south,</h3>
@@ -20,26 +19,28 @@ const Home = (props) => {
                         <h3 className="home-welcome-message">journey never ends.</h3>
                     </div>
                 </div>
-    </header>
+            </header>
             <hr />
-            <section className="row">
-                <h2>Featured Quests</h2>
+            <section className="featured-quests text-center">
+                <h2 className="featured-quests-title">Featured Quests</h2>
                 {props.trips.length &&
-                    <div>
-                        <div>
-                            <img src={props.trips[0].imageUrl} />
-                            <h3>{props.trips[0].location}</h3>
-                            <h4>${props.trips[0].price}</h4>
-                        </div>
-                        <div>
-                            <img src={props.trips[1].imageUrl} />
-                            <h3>{props.trips[1].location}</h3>
-                            <h4>${props.trips[1].price}</h4>
-                        </div>
-                        <div>
-                            <img src={props.trips[2].imageUrl} />
-                            <h3>{props.trips[2].location}</h3>
-                            <h4>${props.trips[2].price}</h4>
+                    <div className="container">
+                        <div className="row justify-content-around">
+                            <div className="col-sm-4">
+                                <img className= "featured-quest-img" src={props.trips[0].imageUrl} />
+                                <h3 className="featured-quest-location">{props.trips[0].location}</h3>
+                                <h4 className="featured-quest-price">${props.trips[0].price}</h4>
+                            </div>
+                            <div className="col-sm-4">
+                                <img className= "featured-quest-img" src={props.trips[1].imageUrl} />
+                                <h3 className="featured-quest-location">{props.trips[1].location}</h3>
+                                <h4 className="featured-quest-price">${props.trips[1].price}</h4>
+                            </div>
+                            <div className="col-sm-4">
+                                <img className= "featured-quest-img" src={props.trips[2].imageUrl} />
+                                <h3 className="featured-quest-location">{props.trips[2].location}</h3>
+                                <h4 className="featured-quest-price">${props.trips[2].price}</h4>
+                            </div>
                         </div>
                     </div>
                 }

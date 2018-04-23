@@ -54,9 +54,9 @@ form div {
   margin: 10px 10px 45px 10px;
 }
 
-.container{
+/* .container{
   display: flex
-}
+} */
 .container-1{
   display: flex;
   justify-content: center;
@@ -84,16 +84,7 @@ form div {
 .nav-btn:hover{
   color: rgb(148, 144, 144);
 }
-.home-welcome-title{
-  margin: 20px 20px;
-  text-align: center;
-  font-size: 85px;
-  position: absolute;
-  top: 10%;
-  left: 49%;
-  transform: translate(-50%, -50%);
-  color: rgb(238, 221, 186);
-}
+
 .sidenav{
   flex-shrink: 0;
 }
@@ -122,23 +113,43 @@ form div {
   background-color: #eee;
 } */
 
+/* HOMEPAGE */
+/* HEADER */
 header.home-welcome {
   position: relative;
   overflow: hidden;
   padding: 0;
   margin: 0;
-  /* padding-bottom: 7em; */
+  background-image: url("/images/photo-1494137319847-a9592a0e73ed.jpeg");
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-attachment: scroll;
+  background-size: cover;
 }
+
 .home-welcome-content {
   z-index: 1;
   position: relative;
 }
 
+.home-welcome-title{
+  font-size: 85px;
+  color: rgb(238, 221, 186);
+}
+
 .home-welcome-message {
   font-size: 2rem;
+  color: white;
+
 }
 
 .no-gutters {
   margin: 0;
   padding: 0;
+}
+
+/* FEATURED QUESTS */
+
+.featured-quests-title {
+  text-align: center;
 }
