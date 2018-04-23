@@ -1,16 +1,16 @@
 const router = require('express').Router()
-const {Trip, Order } = require('../db/models')
+const {Trip, Order, Cart } = require('../db/models')
 module.exports = router
 
-// router.get('/', (req, res, next) => {
-//   Order.findAll({
-//     include: [{
-//       model: Trip
-//     }]
-//   })
-//     .then(orders => res.send(orders))
-//     .catch(next);
-// });
+router.get('/', (req, res, next) => {
+  Order.findAll({
+    include: [{
+      model: Trip
+    }]
+  })
+    .then(orders => res.send(orders))
+    .catch(next);
+});
 
 router.get('/:userId', (req, res, next) => {
   Order.findAll( {
@@ -26,15 +26,14 @@ router.get('/:userId', (req, res, next) => {
 });
 
 router.post('/:userId', (req, res, next) => {
-  Order.createOrFind({
-    where: {id: req.params.orderId},
-    include: [{model: Trip}]
-  }, req.body)
-    .then(newOrder => res.send(newOrder))
+    console.log("REQ.BODY!!", req.body)
+  Order.create(req.body)
+    .then(order => {
+      order.addTrip(req.body.tripId)
+    })
+    .then(order => res.send(order))
     .catch(next)
 })
 
-router.get('/', (req, res, next) => {
-  req.session.cart = []
-  console.log("here is session!", req.session)
-})
+  // .then((order) => Cart.create({ orderId: order.orderId, tripId: req.body.tripId }))
+  // .then()

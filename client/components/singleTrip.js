@@ -3,7 +3,6 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { fetchSingleTrip } from '../store/trips';
 import { fetchAllFromCart, postNewItem } from '../store/cart';
-// import { getUser } from '../store/user';
 import EditTrip from './editTrip';
 
 class SingleTrip extends Component {
@@ -25,31 +24,23 @@ class SingleTrip extends Component {
     }
 
     handleChange(e) {
-      this.setState({[e.target.name]: e.target.value})
+      this.setState({
+        quantity: e.target.value
+      })
     }
 
-    // handleSubmit(e) {
-    //   e.preventDefault();
-    //   let trip = this.props.selectedTrip
-    //   const addOrder = {
-    //     quantity: +this.state.quantity,
-    //     price: trip.price
-    //   }
-    //   this.postOrder(newOrder)
-    //   this.setState({
-    //     quantity: ''
-    //   })
-    // }
 
     render() {
+      console.log("USER!!!", this.props.user.id)
+      console.log("quantity", this.state.quantity)
       const newItem = {
-        userId: this.props.user.id,
-        orderId: this.props.cart.id,
-        tripId: this.props.selectedTrip.id,
         quantity: +this.state.quantity,
-        unitPrice: this.props.selectedTrip.price
+        unitPrice: +this.props.selectedTrip.price,
+        tripId: this.props.selectedTrip.id,
+        userId: +this.props.user.id,
       }
-      // console.log("Single Trip user", this.props.isAdmin)
+      {console.log("Single Trip user", this.props.user.id)}
+      // console.log("SINGLE TRIP PROPS!!", this.props )
         let trip = this.props.selectedTrip
         // console.log("rendering single trip", trip)
         return (
@@ -61,16 +52,20 @@ class SingleTrip extends Component {
             <p>Description: {trip.description}</p>
             {
               trip.isAvailable ?
-              (<form onSubmit={() => {this.props.postNewItem(newItem)}}>
-              <label>Quantity</label>
-              <input type='number'
-                    name='quantity'
-                    value={this.state.quantity}
-                    placeholder='0'
-                    onChange={this.handleChange} />
-              <button className="add-to-cart-btn" type="submit">Add to Cart</button>
-            </form>) :
-            <span>Currently Unavailable</span>
+                (<form onSubmit={(evt) => {this.props.addToCart(newItem, evt)}}>
+                  <label>Quantity</label>
+                  <input type='number'
+                        name='quantity'
+                        value={this.state.quantity}
+                        placeholder='0'
+                        onChange={this.handleChange} />
+                        {
+                          (this.state.quantity && this.state.quantity < 0) && <div className='alert alert-warning' style={{color:'red'}}>Please enter a valid quantity!</div>
+                        }
+                  <button className="add-to-cart-btn" type="submit">Add to Cart</button>
+                </form>)
+                :
+                <span>Currently Unavailable</span>
             }
             {this.props.isAdmin &&
               <div>
@@ -99,7 +94,8 @@ class SingleTrip extends Component {
        getAllFromCart: (userId) => {
          dispatch(fetchAllFromCart(userId));
        },
-       postNewItem: (newItem) => {
+       addToCart: (newItem, evt) => {
+         evt.preventDefault()
          dispatch(postNewItem(newItem))
        },
       //  getUser: (user) => {

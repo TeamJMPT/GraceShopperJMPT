@@ -5,9 +5,26 @@ const Order = db.define('order', {
     status : {
         type: Sequelize.ENUM('pending', 'complete'),
         defaultValue: 'pending'
+    },
+    quantity: {
+        type: Sequelize.INTEGER,
+        allowNull: false
+    },
+
+    unitPrice: {
+        type: Sequelize.INTEGER
+    },
+
+    subTotal: {
+        type: Sequelize.INTEGER,
+        get() {
+            return this.quantity * this.unitPrice
+        }
     }
 })
 
+// Order.beforeSave((order) => {
+
+// })
+
 module.exports = Order
-
-
