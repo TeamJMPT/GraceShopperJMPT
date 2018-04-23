@@ -1,7 +1,7 @@
 const Sequelize = require('sequelize')
 const db = require('../db')
 
-const TripOrder = db.define('tripOrder', {
+const Cart = db.define('cart', {
     quantity: {
         type: Sequelize.INTEGER,
         allowNull: false
@@ -11,7 +11,7 @@ const TripOrder = db.define('tripOrder', {
         type: Sequelize.INTEGER
     },
 
-    totalPrice: {
+    subTotal: {
         type: Sequelize.INTEGER,
         get() {
             return this.quantity * this.unitPrice
@@ -19,4 +19,4 @@ const TripOrder = db.define('tripOrder', {
     }
 })
 
-module.exports = TripOrder
+module.exports = Cart

@@ -8,6 +8,7 @@ const passport = require('passport')
 const SequelizeStore = require('connect-session-sequelize')(session.Store)
 const db = require('./db')
 const User = require('./db/models/user')
+const Order = require('./db/models/order')
 // const Cart = require('./db/models/cart')
 const sessionStore = new SequelizeStore({db})
 const PORT = process.env.PORT || 8080
@@ -43,12 +44,15 @@ const createApp = () => {
   // compression middleware
   app.use(compression())
 
+  // static file-serving middleware
+  app.use(express.static(path.join(__dirname, '..', 'public')))
+
   // session middleware with passport
   app.use(session({
     secret: process.env.SESSION_SECRET || 'my best friend is Cody',
     store: sessionStore,
     resave: false,
-    saveUninitialized: false
+    saveUninitialized: true
   }))
   app.use(passport.initialize())
   app.use(passport.session())
@@ -88,7 +92,7 @@ const createApp = () => {
   //     }
   //     if (!req.session.user) {//not logged in
   //       //Otherwise, findOrCreate a cart owned by nobody
-  //       Cart.findOrCreate({ 
+  //       Cart.findOrCreate({
   //         where: {
   //           userId: null
   //         }
@@ -110,9 +114,6 @@ const createApp = () => {
   // auth and api routes
   app.use('/auth', require('./auth'))
   app.use('/api', require('./api'))
-
-  // static file-serving middleware
-  app.use(express.static(path.join(__dirname, '..', 'public')))
 
   // any remaining requests with an extension (.js, .css, etc.) send 404
   app.use((req, res, next) => {

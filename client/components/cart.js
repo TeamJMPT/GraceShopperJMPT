@@ -4,34 +4,34 @@ import { Link } from 'react-router-dom';
 import Sidebar from './sidebar';
 import { fetchAllFromCart } from '../store/cart';
 
- class Cart extends Component {
-     componentDidMount() {
-         this.props.getAllFromCart(this.props.state.user.id);
-     }
+class Cart extends Component {
+    componentDidMount() {
+        this.props.getAllFromCart(this.props.state.user.id);
+    }
 
-     render() {
-         console.log("CART!", this.props.cart)
+    render() {
+        console.log("CART!", this.props.cart)
         return (
             <div className="container">
                 <Sidebar />
                 <div className="cart-title">
-                <h2>Your Cart</h2>
+                    <h2>Your Cart</h2>
                 </div>
                 {
                     this.props.cart.map(item => {
                         return item.trips.map(trip => {
-                            return <ul key={trip.id}>{trip.name}, {trip.location}, {trip.tripOrder.quantity}</ul>
+                            return <ul key={trip.id}>{trip.name}, {trip.location}, {trip.cart.quantity}</ul>
                         })
                     })
                 }
                 <div className="cart-total">
-                <h2>Total:</h2>
-                <button className="checkout">Checkout</button>
+                    <h2>Total:</h2>
+                    <button className="checkout">Checkout</button>
                 </div>
             </div>
         )
-     }
- }
+    }
+}
 
 
 
