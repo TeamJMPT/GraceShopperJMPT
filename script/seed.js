@@ -47,17 +47,25 @@ async function seed () {
     price: '5000', description: 'Winterfell is the house of the North and the ancestral home of House Stark. It is a large stronghold extending across many acres of territory, defended by two layers of strong stone granite walls. The outer walls are 80 feet tall and the inner are 100 feet tall, with a wide moat located between them.'})
   ])
 
-
-  // const orders = await Promise.all([
-  //   Order.create({}),
-  //   Order.create({}),
-  //   Order.create({})
-  // ])
-
   const categories = await Promise.all([
     Category.create({name: 'Movies'}),
     Category.create({name: 'Books'}),
-    Category.create({name: 'TV Shows'})
+    Category.create({ name: 'TV Shows' }),
+  ])
+
+  const addTripsToCategories = await Promise.all([
+    Category.findById(1).then(category => category.addTrip(2)),
+    Category.findById(1).then(category => category.addTrip(3)),
+    Category.findById(1).then(category => category.addTrip(5)),
+
+    Category.findById(2).then(category => category.addTrip(1)),
+    Category.findById(2).then(category => category.addTrip(8)),
+    Category.findById(2).then(category => category.addTrip(7)),
+    Category.findById(2).then(category => category.addTrip(2)),
+
+    Category.findById(3).then(category => category.addTrip(8)),
+    Category.findById(3).then(category => category.addTrip(4)),
+    Category.findById(3).then(category => category.addTrip(6))
   ])
 
 
@@ -66,8 +74,7 @@ async function seed () {
   console.log(`seeded ${users.length} users`)
   console.log(`seeded ${trips.length} trips`)
   console.log(`seeded ${categories.length} categories`)
-  // console.log(`seeded ${orders.length} orders`)
-  // console.log(`seeded ${tripOrders.length} tripOrders`)
+  console.log(`seeded ${addTripsToCategories.length} associated trips and categories`)
 
   console.log(`seeded successfully`)
 }
