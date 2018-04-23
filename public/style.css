@@ -54,9 +54,14 @@ form div {
   margin: 10px 10px 45px 10px;
 }
 
-/* .container{
-  display: flex
-} */
+.container{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+}
+
 .container-1{
   display: flex;
   justify-content: center;
@@ -152,4 +157,9 @@ header.home-welcome {
 
 .featured-quests-title {
   text-align: center;
+}
+
+.featured-quest-img {
+  max-width: 100%;
+  height: auto;
 }
