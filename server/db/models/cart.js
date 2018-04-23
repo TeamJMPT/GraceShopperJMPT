@@ -1,3 +1,5 @@
+// potentially delete me (or rename to lineItems) -- KHLW
+
 const Sequelize = require('sequelize')
 const db = require('../db')
 

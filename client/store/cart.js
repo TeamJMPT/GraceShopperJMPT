@@ -33,7 +33,7 @@ export const fetchAllFromCart = (userId) => {
 
 
 export const postNewItem = (newItem) => {
-  return dispatch => {
+  return dispatch => { // change other files to use this structure -- kHLW
     console.log("NEWITEM:", newItem)
     axios.post(`/api/orders/${newItem.userId}`, newItem)
       .then(res => {
@@ -48,7 +48,7 @@ export const postNewItem = (newItem) => {
 export function cartReducer(orders = [], action) {
   switch (action.type) {
     case GET_ALL_FROM_CART:
-      orders = action.orders
+      orders = action.orders // why 2 lines? -- KHLW
       return orders
     case ADD_TO_CART:
       return [...orders, action.newItem]

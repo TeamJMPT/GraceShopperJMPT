@@ -10,21 +10,20 @@ const Navbar = ({ handleClick, isLoggedIn, isAdmin }) => (
     <Link to="/"><img alt="logo" src="/images/compass.png" /></Link>
     </div>
     <nav>
-      {isLoggedIn ? (
         <div className="nav-item">
+          <Link className='nav-btn' to="/trips">Quests</Link> {/* repeated below so DRY out your code -- KHLW*/}
+          <Link className='nav-btn' to="/cart"><img id="cart-img" alt="logo" src="/images/luggage.png" /></Link>
+      {isLoggedIn ? (
           {/* The navbar will show these links after you log in */}
           {isAdmin && <Link className='nav-btn' to="/add">Add</Link>}
-          <Link className='nav-btn' to="/trips">Quests</Link>
-          <Link className='nav-btn' to="/cart"><img id="cart-img" alt="logo" src="/images/luggage.png" /></Link>
           <a className='nav-btn' href="#" onClick={handleClick}>
             Logout
             </a>
-        </div>
       ) : (
           <div>
             {/* The navbar will show these links before you log in */}
             <div className="container-1">
-               <input className="search" type="search" id="search"  placeholder="Search..." />
+               <input className="search" type="search" id="search"  placeholder="Search..." /> {/* remove me -- KHLW*/}
                 <Link className='nav-btn' to="/trips">Quests</Link>
                 <Link className='nav-btn' to="/login">Login</Link>
                 <Link  className='nav-btn' to="/signup">Sign Up</Link>
@@ -33,6 +32,7 @@ const Navbar = ({ handleClick, isLoggedIn, isAdmin }) => (
 
           </div>
         )}
+        </div>
     </nav>
     {/* <hr /> */}
   </div>

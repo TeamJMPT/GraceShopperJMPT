@@ -46,13 +46,13 @@ export const fetchAllTrips = () => {
         trips.map(trip => trip.categories.map(category => category.name))
         return dispatch(getAllTrips(trips))
       })
-      .catch(console.error);
+      .catch(console.error); // just note that eventually you as a developer want to show this to the user. Redirect to an error page. Show a message that has a timeout (alert, error store). Show message (error store) and it goes away when the componentUnmount dispatch(clearErrors()) -- KHLW
   }
 }
 
 export const fetchSingleTrip = (id) => {
   return dispatch => {
-    axios.get(`/api/trips/${id}`)
+    axios.get(`/api/trips/${id}`) // sometimes you return axios and sometimes you aren't -- KHLW
       .then(res => res.data)
       .then(trip => {
         dispatch(getSingleTrip(trip))
@@ -103,7 +103,7 @@ export const updateTrip = (updatedTrip, history) => {
 //REDUCER(S)
 
 export function searchReducer(searchInput = '', action) {
-  switch (action.type) {
+  switch (action.type) { // not sure if this needs to be in store or if local state of the component might be enough -- KHLW
     case SEARCH: {
       // value = action.value
       // const works = value.contents.filter((val) => val.includes(value));
@@ -119,11 +119,13 @@ export function searchReducer(searchInput = '', action) {
 export function tripReducer(trips = [], action) {
   switch (action.type) {
     case GET_ALL_TRIPS:
-      trips = action.trips
+      trips = action.trips // 1 line -- KHLW
       return trips
     case ADD_TRIP:
       return [...trips, action.newTrip]
     case ADD_UPDATED_TRIP:
+    // if you just updated a trip you need to remove the updated on and then spread. Or use a map
+      // trips.map(t => t.id === action.updatedTrip.id ? action.updatedTrip : t)
       return [...trips, action.updatedTrip]
     default:
       return trips

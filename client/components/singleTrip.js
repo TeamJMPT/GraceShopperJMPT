@@ -12,7 +12,7 @@ class SingleTrip extends Component {
         quantity: '',
       }
       // this.handleSubmit = this.handleSubmit.bind(this)
-      this.handleChange = this.handleChange.bind(this)
+      // this.handleChange = this.handleChange.bind(this)
     }
 
 
@@ -23,7 +23,8 @@ class SingleTrip extends Component {
         // console.log(this.props.user)
     }
 
-    handleChange(e) {
+    handleChange = (e) => { // if you want you can do this because we are using webpack -> babel/env -- KHLW
+      // check typeof e.target.value. If 'number' then quantity should be defaulted to 0. If still funny disregard / help ticket -- KHLW
       this.setState({
         quantity: e.target.value
       })
@@ -59,7 +60,7 @@ class SingleTrip extends Component {
                         value={this.state.quantity}
                         placeholder='0'
                         onChange={this.handleChange} />
-                        {
+                        { /* WE Love that you have form validation!! -- KHLW */
                           (this.state.quantity && this.state.quantity < 0) && <div className='alert alert-warning' style={{color:'red'}}>Please enter a valid quantity!</div>
                         }
                   <button className="add-to-cart-btn" type="submit">Add to Cart</button>
@@ -79,7 +80,7 @@ class SingleTrip extends Component {
 
     const mapState = state => {
       return {
-        selectedTrip: state.selectedTrip,
+        selectedTrip: state.selectedTrip, // why go to the backend again? You are loading all products trips.find(t => t.id === tId) || {}. Theoretically, you wouldn't get all products from the back at the get go, so making this request would THEN make sense -- KHLW
         isAdmin: state.user.isAdmin,
         cart: state.cart,
         user: state.user
@@ -98,7 +99,7 @@ class SingleTrip extends Component {
          evt.preventDefault()
          dispatch(postNewItem(newItem))
        },
-      //  getUser: (user) => {
+      //  getUser: (user) => { // delete stale code -- KHLW
       //    dispatch(getUser(user))
       //  }
      }

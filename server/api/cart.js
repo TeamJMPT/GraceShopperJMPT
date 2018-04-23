@@ -6,7 +6,7 @@ module.exports = router;
 //I can do this either logged in or as a vistor who's logged out.
 //If I'm logged in my cart will be associated with my userId. If not, I need a cartId on my session (which will be the orderId in the db) so that I can still access my cart when I come back to the site.
 
-
+// ONLY UNAUTHENTICATED USERS - using req.session.cartId OR just add that attribute in your db -- KHLW
 router.use(async (req, res, next) => {
   // console.log("CART??", req.cart)
   // console.log("req.session", req.session)

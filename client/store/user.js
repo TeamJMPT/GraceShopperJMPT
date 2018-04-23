@@ -15,7 +15,7 @@ const defaultUser = {}
 /**
  * ACTION CREATORS
  */
-const getUser = user => ({type: GET_USER, user})
+const getUser = user => ({type: GET_USER, user}) // change thse to match your code -- KHLW
 const removeUser = () => ({type: REMOVE_USER})
 
 /**

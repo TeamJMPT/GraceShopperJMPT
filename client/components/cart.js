@@ -12,7 +12,8 @@ class Cart extends Component {
 
     render() {
         console.log("TRIPS", this.props.state.trips && this.props.cart)
-
+        const {quantity, unitPrice, subTotal} = this.props.cart
+        const cart = {quantity, unitPrice, subTotal, trip: this.props.cart.trips[0].name} // might need to change if you change the backedn -- KHLW
         return (
             <div>
                 <BootstrapTable data={this.props.cart}>

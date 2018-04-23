@@ -19,7 +19,7 @@ router.post('/', (req, res, next) => {
     //creates and saves trip to database
     Trip.create(req.body)
     //sends created status
-    .then(trip => res.send(trip))
+    .then(trip => res.send(trip)) // expect 201 - KHLW
     .catch(next)
 })
 
@@ -27,8 +27,8 @@ router.put('/:id', (req, res, next) => {
     Trip.update(req.body,
         {where: {id: req.params.id},
          returning: true})
-    .then(trip => {
-            res.status(201).json(trip[1][0])
+    .then(trip => { // destructure so this name is meaningful ([rowsAffected, updatedTrips])
+            res.status(201).json(trip[1][0]) // send vs json, just be consistent; 200 not 201 -- KHLW
     })
     .catch(next)
 })
