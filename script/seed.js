@@ -48,11 +48,11 @@ async function seed () {
   ])
 
 
-  const orders = await Promise.all([
-    Order.create({}),
-    Order.create({}),
-    Order.create({})
-  ])
+  // const orders = await Promise.all([
+  //   Order.create({}),
+  //   Order.create({}),
+  //   Order.create({})
+  // ])
 
   const categories = await Promise.all([
     Category.create({name: 'Movies'}),
@@ -66,7 +66,7 @@ async function seed () {
   console.log(`seeded ${users.length} users`)
   console.log(`seeded ${trips.length} trips`)
   console.log(`seeded ${categories.length} categories`)
-  console.log(`seeded ${orders.length} orders`)
+  // console.log(`seeded ${orders.length} orders`)
   // console.log(`seeded ${tripOrders.length} tripOrders`)
 
   console.log(`seeded successfully`)

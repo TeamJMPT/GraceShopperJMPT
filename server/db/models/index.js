@@ -2,7 +2,6 @@ const User = require('./user');
 const Category = require('./category');
 const Trip = require('./trips');
 const Order = require('./order');
-const Cart = require('./cart');
 
 /**
  * If we had any associations to make, this would be a great place to put them!
@@ -14,8 +13,8 @@ const Cart = require('./cart');
  Category.belongsToMany(Trip, {through: 'TripCategory'});
  Trip.belongsToMany(Category, {through: 'TripCategory'});
 
- Order.belongsToMany(Trip, {through: Cart});
- Trip.belongsToMany(Order, {through: Cart});
+ Order.belongsToMany(Trip, {through: 'Cart'});
+ Trip.belongsToMany(Order, {through: 'Cart'});
 
  Order.belongsTo(User)
 
@@ -31,5 +30,4 @@ module.exports = {
   Category,
   Trip,
   Order,
-  Cart
 };

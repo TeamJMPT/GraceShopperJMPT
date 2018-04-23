@@ -24,19 +24,23 @@ class SingleTrip extends Component {
     }
 
     handleChange(e) {
-      this.setState({[e.target.name]: e.target.value})
+      this.setState({
+        quantity: e.target.value
+      })
     }
 
 
     render() {
+      console.log("USER!!!", this.props.user.id)
+      console.log("quantity", this.state.quantity)
       const newItem = {
-        userId: +this.props.user.id,
-        // orderId: this.props.cart.id,
-        tripId: this.props.selectedTrip.id,
         quantity: +this.state.quantity,
-        unitPrice: this.props.selectedTrip.price
+        unitPrice: +this.props.selectedTrip.price,
+        tripId: this.props.selectedTrip.id,
+        userId: +this.props.user.id,
       }
-
+      {console.log("Single Trip user", this.props.user.id)}
+      // console.log("SINGLE TRIP PROPS!!", this.props )
         let trip = this.props.selectedTrip
         // console.log("rendering single trip", trip)
         return (

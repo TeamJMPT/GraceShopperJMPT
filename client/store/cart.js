@@ -34,6 +34,7 @@ export const fetchAllFromCart = (userId) => {
 
 export const postNewItem = (newItem) => {
   return dispatch => {
+    console.log("NEWITEM:", newItem)
     axios.post(`/api/orders/${newItem.userId}`, newItem)
       .then(res => {
         console.log("RES.DATA:", res.data)
