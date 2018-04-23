@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 const router = require('express').Router()
 const { Trip, Order } = require('../db/models')
 module.exports = router;
@@ -59,3 +60,6 @@ router.put('/', (req, res, next) => {
   Order.update({})
 
 })
+=======
+
+>>>>>>> master

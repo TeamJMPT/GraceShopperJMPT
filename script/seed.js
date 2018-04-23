@@ -29,7 +29,11 @@ async function seed () {
   ])
 
   const trips = await Promise.all([
+<<<<<<< HEAD
     Trip.create({name: 'Hogwards', location: 'England', imageUrl: '/images/bf1f46dbe772627d8fc1b65d0d0f5dbd.jpg',
+=======
+    Trip.create({name: 'Hogwarts', location: 'England', imageUrl: '/images/bf1f46dbe772627d8fc1b65d0d0f5dbd.jpg', 
+>>>>>>> master
     price: '5000', description: "Hogwarts School of Witchcraft and Wizardry, shortened to Hogwarts, is a fictional British school of magic for students aged eleven to eighteen, and is the primary setting for the first six books in J.K. Rowling's Harry Potter series."}),
     Trip.create({name: 'Mordor', location: 'East of Gondor', imageUrl: '/images/de8c77f0ca734f0455b11889bd58a582.jpg',
     price: '2000', description: "J. R. R. Tolkien's fictional world of Middle-earth, Mordor was the region occupied and controlled by Sauron, in the southeast of northwestern Middle-earth to the East of Anduin, the great river."}),

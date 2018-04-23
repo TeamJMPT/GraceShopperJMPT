@@ -2,9 +2,12 @@ const router = require('express').Router()
 const {Trip, Order } = require('../db/models')
 module.exports = router
 
+<<<<<<< HEAD
 //utilize these routes when we are actually checking out??
 
 //this route may be useful for an admin who wants to see all orders
+=======
+>>>>>>> master
 router.get('/', (req, res, next) => {
   Order.findAll({
     include: [{
@@ -29,10 +32,14 @@ router.get('/:userId', (req, res, next) => {
 });
 
 router.post('/:userId', (req, res, next) => {
-  Order.createOrFind({
+  Order.create({
     where: {id: req.params.orderId},
     include: [{model: Trip}]
   }, req.body)
     .then(newOrder => res.send(newOrder))
     .catch(next)
 })
+<<<<<<< HEAD
+=======
+
+>>>>>>> master
