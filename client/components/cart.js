@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import Sidebar from './sidebar';
 import { fetchAllFromCart } from '../store/cart';
 import { BootstrapTable, TableHeaderColumn } from 'react-bootstrap-table';
+import Checkout from './checkout'
 
 class Cart extends Component {
     componentDidMount() {
@@ -30,6 +31,7 @@ class Cart extends Component {
                     </TableHeaderColumn>
                 </BootstrapTable>
                 <h4>Your Total: {}</h4>
+                <Checkout />
             </div>
         )
     }
