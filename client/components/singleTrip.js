@@ -11,7 +11,6 @@ class SingleTrip extends Component {
       this.state = {
         quantity: '',
       }
-      // this.handleSubmit = this.handleSubmit.bind(this)
       this.handleChange = this.handleChange.bind(this)
     }
 
@@ -19,8 +18,6 @@ class SingleTrip extends Component {
     componentDidMount(){
         this.props.getSingleTrip(this.props.match.params.id);
         this.props.getAllFromCart(this.props.user.id);
-        // this.props.getUser(this.props.match.params.user)
-        // console.log(this.props.user)
     }
 
     handleChange(e) {
@@ -31,8 +28,6 @@ class SingleTrip extends Component {
 
 
     render() {
-      console.log("USER!!!", this.props.user.id)
-      console.log("quantity", this.state.quantity)
       const newItem = {
         quantity: +this.state.quantity,
         unitPrice: +this.props.selectedTrip.price,
@@ -40,9 +35,7 @@ class SingleTrip extends Component {
         userId: +this.props.user.id,
       }
       {console.log("Single Trip user", this.props.user.id)}
-      // console.log("SINGLE TRIP PROPS!!", this.props )
         let trip = this.props.selectedTrip
-        // console.log("rendering single trip", trip)
         return (
           <div>
             <img src={trip.imageUrl} />

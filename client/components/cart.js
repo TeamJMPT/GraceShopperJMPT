@@ -14,9 +14,9 @@ class Cart extends Component {
         console.log("TRIPS", this.props.state.trips && this.props.cart)
 
         return (
-            <div>
+            <div key={this.props.cart.tripId}>
                 <BootstrapTable data={this.props.cart}>
-                    <TableHeaderColumn dataField={this.props.cart.trips && this.props.cart.trips.map(trip => trip.name)}>
+                    <TableHeaderColumn dataField="trip">
                         Trip
                     </TableHeaderColumn>
                     <TableHeaderColumn isKey dataField='quantity'>
