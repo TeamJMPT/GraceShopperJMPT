@@ -12,7 +12,6 @@ class AddNewTrip extends Component {
             price : '',
             description : ''
         }
-
         this.handleChange = this.handleChange.bind(this)
         this.handleSubmit = this.handleSubmit.bind(this)
     }
@@ -93,39 +92,7 @@ class AddNewTrip extends Component {
                 </div>
             </form>
         );
-
     }
-
 }
-
-
-// const mapState = state => {
-//     return {
-//         newTrip: this.state
-//     }
-// }
-
-// const mapDispatch = (dispatch, ownProps) => {
-//     return {
-//         handleSubmit(e) {
-//             e.preventDefault();
-//             const newTrip = {
-//                 name : this.state.name,
-//                 location : this.state.location,
-//                 imageURL : this.state.imageURL,
-//                 price : +this.state.price,
-//                 description : this.state.description
-//             }
-//             dispatch(createNewTrip(newTrip, ownProps.history))
-//             this.setState({
-//                 name : '',
-//                 location : '',
-//                 imageURL : '',
-//                 price : '',
-//                 description : ''
-//             })
-//         }
-//     }
-// }
 
 export default connect(null, {createNewTrip})(AddNewTrip);

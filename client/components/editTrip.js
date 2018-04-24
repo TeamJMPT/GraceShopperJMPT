@@ -95,39 +95,13 @@ class EditTrip extends Component {
         </div>
       </form>
     );
-
   }
-
 }
-
 
 const mapState = (state) => {
     return {
         selectedTrip: state.selectedTrip
     }
 }
-
-// const mapDispatch = (dispatch, ownProps) => {
-//     return {
-//         handleSubmit(e) {
-//             e.preventDefault();
-//             const newTrip = {
-//                 name : this.state.name,
-//                 location : this.state.location,
-//                 imageURL : this.state.imageURL,
-//                 price : +this.state.price,
-//                 description : this.state.description
-//             }
-//             dispatch(createNewTrip(newTrip, ownProps.history))
-//             this.setState({
-//                 name : '',
-//                 location : '',
-//                 imageURL : '',
-//                 price : '',
-//                 description : ''
-//             })
-//         }
-//     }
-// }
 
 export default connect(mapState, { updateTrip })(EditTrip);
