@@ -9,7 +9,7 @@ import orderReducer from './orders';
 import { cartReducer } from './cart';
 
 const reducer = combineReducers({user, trips: tripReducer, selectedTrip: singleTripReducer,
-   categories: categoriesReducer, cart: cartReducer, search: searchReducer, orders})
+   categories: categoriesReducer, cart: cartReducer, search: searchReducer, orders: orderReducer})
 
 const middleware = composeWithDevTools(applyMiddleware(
   thunkMiddleware,
