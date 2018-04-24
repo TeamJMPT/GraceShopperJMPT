@@ -2,15 +2,17 @@ const router = require('express').Router()
 const {Trip, Order, Cart, User } = require('../db/models')
 module.exports = router
 
-//Need to add authentication. This route should only be accessible to admins.
+//only admins are authorized to access this route
 router.get('/', (req, res, next) => {
-  Order.findAll({
-    include: [{
-      model: Trip
-    }]
-  })
-    .then(orders => res.send(orders))
-    .catch(next);
+  req.user && req.user.isAdmin ?
+    Order.findAll({
+      include: [{
+       model: Trip
+      }]
+    })
+     .then(orders => res.send(orders))
+      .catch(next)
+    : res.send("Unauthorized. You do not have access.");
 });
 
 //Middleware for routes to /api/orders/user/:userId
