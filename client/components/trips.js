@@ -39,7 +39,6 @@ class Trips extends Component {
   }
 
   render() {
-    console.log("trips now in trip component", this.props.trips)
     let searchLength = this.state.search.length;
 
     let isDirty = searchLength ? true : false;
@@ -51,17 +50,19 @@ class Trips extends Component {
         <form onSubmit={this.handleSubmit}>
           <span className="icon"><i className="fa fa-search"></i></span>
           <input className="search" type="search" id="search" placeholder="Search..." value={this.state.search} onChange={this.searchHandler}/>
-         </form> 
-        
+         </form>
+
         {isDirty ? <div className="wrap">
-        {  this.trips().filter(searchingFor(this.state.search)).length ? 
+        {  this.trips().filter(searchingFor(this.state.search)).length ?
           (this.trips().filter(searchingFor(this.state.search)).map(trip => {
             return (
               <div className="trips"  key={trip.id}>
+              <Link to={`/trips/${trip.id}`} className='trips'>
                 <img className="trips-images"src={trip.imageUrl} />
-                <Link to={`/trips/${trip.id}`} className='trips'><h3>{trip.name}</h3></Link>
+                <h3>{trip.name}</h3>
                 <h5>{trip.location}</h5>
                 <h5>{`$${trip.price}`}</h5>
+              </Link>
               </div>
             )
           })) :<p>No Match</p>
@@ -71,16 +72,17 @@ class Trips extends Component {
           this.trips().map(trip => {
             return (
               <div className="trips"  key={trip.id}>
+              <Link to={`/trips/${trip.id}`} className='trips'>
                 <img className="trips-images"src={trip.imageUrl} />
-                <Link to={`/trips/${trip.id}`} className='trips'><h3>{trip.name}</h3></Link>
+                <h3>{trip.name}</h3>
                 <h5>{trip.location}</h5>
                 <h5>{`$${trip.price}`}</h5>
+              </Link>
               </div>
             )
           })
         }
         </div> }
-        
         </div>
       </div>
     )

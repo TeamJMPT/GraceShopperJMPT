@@ -1,20 +1,15 @@
 const Sequelize = require('sequelize')
 const db = require('../db')
-
+const { Trip } = require('./index')
+//This is our 'line items'
 const Order = db.define('order', {
-    status : {
-        type: Sequelize.ENUM('pending', 'complete'),
-        defaultValue: 'pending'
-    },
     quantity: {
         type: Sequelize.INTEGER,
         allowNull: false
     },
-
     unitPrice: {
         type: Sequelize.INTEGER
     },
-
     subTotal: {
         type: Sequelize.INTEGER,
         get() {
@@ -22,9 +17,5 @@ const Order = db.define('order', {
         }
     }
 })
-
-// Order.beforeSave((order) => {
-
-// })
 
 module.exports = Order
