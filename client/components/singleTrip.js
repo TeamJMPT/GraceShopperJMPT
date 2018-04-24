@@ -34,8 +34,8 @@ class SingleTrip extends Component {
         tripId: this.props.selectedTrip.id,
         userId: +this.props.user.id,
       }
-      {console.log("Single Trip user", this.props.user.id)}
-        let trip = this.props.selectedTrip
+      let trip = this.props.selectedTrip
+
         return (
           <div>
             <img src={trip.imageUrl} />
@@ -90,10 +90,7 @@ class SingleTrip extends Component {
        addToCart: (newItem, evt) => {
          evt.preventDefault()
          dispatch(postNewItem(newItem))
-       },
-      //  getUser: (user) => {
-      //    dispatch(getUser(user))
-      //  }
+       }
      }
     }
 

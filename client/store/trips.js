@@ -8,8 +8,6 @@ const ADD_TRIP = 'ADD_TRIP';
 const ADD_UPDATED_TRIP = 'ADD_UPDATED_TRIP';
 const SEARCH = 'SEARCH';
 
-
-
 //ACTION CREATORS
 export function getAllTrips(trips) {
   return {type: GET_ALL_TRIPS, trips}
@@ -89,25 +87,10 @@ export const updateTrip = (updatedTrip, history) => {
   }
 }
 
-// export const postNewItem = (newItem) => {
-//   return dispatch => {
-//      axios.post(`/api/cart/${newItem.userId}`, newItem)
-//     .then(res => {
-//       console.log("RES.DATA:", res.data)
-//       return res.data
-//     })
-//     .then(order => dispatch(addToCart(order)));
-//   }
-// }
-
 //REDUCER(S)
-
 export function searchReducer(searchInput = '', action) {
   switch (action.type) {
     case SEARCH: {
-      // value = action.value
-      // const works = value.contents.filter((val) => val.includes(value));
-      // return {...value, value, works};
       return action.searchInput
     }
     default:
@@ -134,9 +117,6 @@ export function singleTripReducer(state = {}, action) {
   switch (action.type) {
     case GET_SINGLE_TRIP:
       return action.selectedTrip
-      //Why doesn't this do what I want???!!??
-    // case ADD_UPDATED_TRIP:
-    //   return action.updatedTrip
     default:
       return state
   }
