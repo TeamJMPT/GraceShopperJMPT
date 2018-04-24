@@ -29,9 +29,9 @@ class Cart extends Component {
 
 
         return (
-            <div>
+            <div key={this.props.cart.tripId}>
                 <BootstrapTable data={this.props.cart}>
-                    <TableHeaderColumn dataField={this.props.cart.trips && this.props.cart.trips.map(trip => trip.name)}>
+                    <TableHeaderColumn dataField="trip">
                         Trip
                     </TableHeaderColumn>
                     <TableHeaderColumn isKey dataField='quantity'>

@@ -11,14 +11,16 @@ const Cart = require('./cart');
  *    BlogPost.belongsTo(User)
  */
 
- Category.belongsToMany(Trip, {through: 'TripCategory'});
- Trip.belongsToMany(Category, {through: 'TripCategory'});
+Category.belongsToMany(Trip, {through: 'TripCategory'});
+Trip.belongsToMany(Category, {through: 'TripCategory'});
 
- Order.belongsToMany(Trip, {through: Cart});
- Trip.belongsToMany(Order, {through: Cart});
-
- Order.belongsTo(User)
-
+Order.belongsTo(Trip);
+//CartId on Order
+Cart.hasMany(Order);
+Order.belongsTo(Cart);
+//UserId on Cart
+User.hasMany(Cart);
+Cart.belongsTo(User);
 
 /**
  * We'll export all of our models here, so that any time a module needs a model,
@@ -31,4 +33,5 @@ module.exports = {
   Category,
   Trip,
   Order,
+  Cart
 };
