@@ -1,39 +1,76 @@
 const router = require('express').Router()
-const {Trip, Order, Cart } = require('../db/models')
+const {Trip, Order, Cart, User } = require('../db/models')
 module.exports = router
 
+//only admins are authorized to access this route
 router.get('/', (req, res, next) => {
-  Order.findAll({
-    include: [{
-      model: Trip
-    }]
-  })
-    .then(orders => res.send(orders))
-    .catch(next);
-});
-
-router.get('/:userId', (req, res, next) => {
-  Order.findAll( {
-    where: {
-      userId: req.params.userId
-    },
-    include: [{
-      model: Trip
-    }]
-  })
-    .then(orders => res.send(orders))
-    .catch(next);
-});
-
-router.post('/:userId', (req, res, next) => {
-    console.log("REQ.BODY!!", req.body)
-  Order.create(req.body)
-    .then(order => {
-      order.addTrip(req.body.tripId)
+  req.user && req.user.isAdmin ?
+    Order.findAll({
+      include: [{
+       model: Trip
+      }]
     })
-    .then(order => res.send(order))
-    .catch(next)
+     .then(orders => res.send(orders))
+      .catch(next)
+    : res.send("Unauthorized. You do not have access.");
+});
+
+//Middleware for routes to /api/orders/user/:userId
+router.use('/user/:userId', (req, res, next) => {
+  User.findById(req.params.userId)
+    .then(user => user.getCarts())
+    .then(carts => {
+      const returned = carts.filter(cart => (cart.status === 'pending'))
+      if (returned.length !== 0) {
+        next();
+      } else {
+        Cart.create({userId: req.params.userId})
+        next();
+      }
+    })
 })
 
-  // .then((order) => Cart.create({ orderId: order.orderId, tripId: req.body.tripId }))
-  // .then()
+//get a user's cart
+router.get('/user/:userId', (req, res, next) => {
+  Cart.findOne({
+    where: {
+      userId: req.params.userId,
+      status: 'pending'
+    }
+  })
+  .then(cart => {
+    return cart.getOrders({include: [{model: Trip}]});
+  })
+  .then(orders => {
+    const send = orders.map(order => {
+        return {
+          subTotal: order.subTotal,
+          quantity: order.quantity,
+          id: order.id,
+          unitPrice: order.unitPrice,
+          tripId: order.tripId,
+          cartId: order.cartId,
+          trip: order.trip.name
+        }
+      });
+    res.send(send);
+    })
+  .catch(next);
+});
+
+//post a new line item to a user's cart
+router.post('/user/:userId', (req, res, next) => {
+    User.findById(req.params.userId)
+    .then(user => user.getCarts())
+    .then(carts => {
+      const returned = carts.filter(cart => (cart.status === 'pending'))
+      return returned
+    })
+    .then(cart => {
+      return Order.create({ quantity: req.body.quantity, unitPrice: req.body.unitPrice, tripId: req.body.tripId, cartId: cart[0].dataValues.id})
+    })
+    .then(order => {
+      res.send(order);
+      })
+    .catch(next);
+});

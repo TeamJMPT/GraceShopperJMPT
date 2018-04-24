@@ -16,6 +16,20 @@ const app = express()
 const socketio = require('socket.io')
 module.exports = app
 
+//STRIPE
+// enable CORS for your application so that your frontend application is able to communicate with your backend application.
+const cors = require('cors')
+// const FRONTEND_DEV_URLS = ['http://localhost:8080']
+// const FRONTEND_PROD_URLS = ['http://www.yourdomain.com', 'http://yourdomain.com']
+const CORS_WHITELIST = 'http://localhost:8080' //process.env.NODE_ENV === 'production' ? FRONTEND_PROD_URLS : FRONTEND_DEV_URLS
+const corsOptions = {
+  origin: CORS_WHITELIST//(origin, callback) => {
+  // (CORS_WHITELIST.indexOf(origin) !== -1)
+  //   ? callback(null, true)
+  //   : callback(new Error('Not allowed by Cors'))
+  // }
+}
+
 /**
  * In your development environment, you can keep all of your
  * app's secret API keys in a file called `secrets.js`, in your project
@@ -36,6 +50,9 @@ passport.deserializeUser((id, done) =>
 const createApp = () => {
   // logging middleware
   app.use(morgan('dev'))
+
+  //STRIPE middleware
+  app.use(cors(corsOptions))
 
   // body parsing middleware
   app.use(bodyParser.json())
@@ -97,7 +114,7 @@ const startListening = () => {
 }
 
 const syncDb = () => db.sync()
-
+// {force: true}
 // This evaluates as true when this file is run directly from the command line,
 // i.e. when we say 'node server/index.js' (or 'nodemon server/index.js', or 'nodemon server', etc)
 // It will evaluate false when this module is required by another module - for example,
