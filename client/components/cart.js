@@ -30,7 +30,7 @@ class Cart extends Component {
                         Sub-Total
                     </TableHeaderColumn>
                 </BootstrapTable>
-                <Link className='orders' to="/orders"><h3>See Order History</h3></Link>
+                <Link className='order-link' to="/orders"><h3 className='order-history'>See Order History</h3></Link>
                 <h4 className='total'>Your Total: {
                     notEmpty ?
                     this.props.cart.map(item => {
