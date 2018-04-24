@@ -12,6 +12,21 @@ class Cart extends Component {
 
     render() {
         console.log("TRIPS", this.props.state.trips && this.props.cart)
+        console.log('trip-name ', this.props.cart)
+        let total = 0;
+        let isEmpty = this.props.cart.length > 1;
+        
+        // const {quantity, unitPrice, subTotal} = this.props.cart;
+        // const temp = this.props.cart.map(item  => {
+        //     const temp = item.trips;
+        //     console.log('iteeeem ', temp)
+
+        //     console.log('naaaaaaem ',temp[0].name)
+        //      return temp
+        //     }
+        // )
+       
+
 
         return (
             <div key={this.props.cart.tripId}>
@@ -29,7 +44,14 @@ class Cart extends Component {
                         Sub-Total
                     </TableHeaderColumn>
                 </BootstrapTable>
-                <h4>Your Total: {}</h4>
+                <h4 className='total'>Your Total: {
+                    isEmpty ? 
+                    this.props.cart.map(item => {
+                        return total + item['subTotal']
+                    })
+                        .reduce((acc, cur) => acc + cur, 0)
+                  : 0}
+                </h4>
             </div>
         )
     }
