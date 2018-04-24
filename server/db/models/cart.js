@@ -9,7 +9,11 @@ const Cart = db.define('cart', {
   },
   address: {
     type: Sequelize.STRING
-  }
+  },
+  // total: {
+  //   type: Sequelize.INTEGER,
+  //   allowNull: false
+  // }
 })
 
 module.exports = Cart;

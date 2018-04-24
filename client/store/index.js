@@ -5,7 +5,7 @@ import {composeWithDevTools} from 'redux-devtools-extension'
 import user from './user'
 import {tripReducer, singleTripReducer, searchReducer} from './trips';
 import categoriesReducer from './categories';
-import orderReducer from './orders';
+import orders from './orders';
 import { cartReducer } from './cart';
 
 const reducer = combineReducers({user, trips: tripReducer, selectedTrip: singleTripReducer,

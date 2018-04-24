@@ -166,10 +166,39 @@ header.home-welcome {
 }
 .total{
   text-align: right;
+  font-size: 1.3rem;
   margin: 20px 40px 20px 0px;
 }
 
 .react-bs-table {
   margin: 80px 20px 10px 25px;
 
+}
+
+.order-history{
+  font-size: 1.3rem;
+  margin-left: 40px;
+}
+.order-link:link {
+  color: black;
+  
+}
+.order-link:visited {
+  color: black;
+}
+
+.order-link:hover{
+  color: rgb(148, 144, 144);
+  text-decoration: none;
+}
+.orders {
+  margin: 30px;
+}
+.your-order{
+  text-align: center;
+}
+.order-list{
+  display: flex;
+  margin: 40px;
+  justify-content: space-around;
 }
