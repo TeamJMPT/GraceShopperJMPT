@@ -20,7 +20,7 @@ const Home = (props) => {
                     </div>
                 </div>
             </header>
-            <hr />
+            {/* <hr /> */}
             <section className="featured-quests text-center">
                 <h2 className="featured-quests-title">Featured Quests</h2>
                 {props.trips.length &&
