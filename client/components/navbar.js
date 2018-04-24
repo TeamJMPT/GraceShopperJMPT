@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import {connect} from 'react-redux'
 import {Link} from 'react-router-dom'
 import {logout} from '../store'
+import { refreshCart } from '../store/cart'
 
 const Navbar = ({ handleClick, isLoggedIn, isAdmin }) => (
   <div className="nav-panel">
@@ -11,9 +12,9 @@ const Navbar = ({ handleClick, isLoggedIn, isAdmin }) => (
     </div>
     <nav>
       {isLoggedIn ? (
-        <div className="nav-item">
+        <div className="container-1">
           {/* The navbar will show these links after you log in */}
-          {isAdmin && <Link className='nav-btn' to="/add">Add</Link>}
+          {isAdmin && <Link className='nav-btn' to="/add">Add Trip</Link>}
           <Link className='nav-btn' to="/trips">Quests</Link>
           <Link className='nav-btn' to="/cart"><img id="cart-img" alt="logo" src="/images/luggage.png" /></Link>
           <a className='nav-btn' href="#" onClick={handleClick}>
@@ -24,7 +25,6 @@ const Navbar = ({ handleClick, isLoggedIn, isAdmin }) => (
           <div>
             {/* The navbar will show these links before you log in */}
             <div className="container-1">
-               <input className="search" type="search" id="search"  placeholder="Search..." />
                 <Link className='nav-btn' to="/trips">Quests</Link>
                 <Link className='nav-btn' to="/login">Login</Link>
                 <Link  className='nav-btn' to="/signup">Sign Up</Link>
@@ -52,6 +52,7 @@ const mapDispatch = dispatch => {
   return {
     handleClick() {
       dispatch(logout())
+      dispatch(refreshCart())
     }
   }
 }

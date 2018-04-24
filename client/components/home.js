@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { fetchAllTrips } from '../store/trips'
+import { Link } from 'react-router-dom';
 
 const Home = (props) => {
     return (
@@ -20,26 +21,32 @@ const Home = (props) => {
                     </div>
                 </div>
             </header>
-            <hr />
+            {/* <hr /> */}
             <section className="featured-quests text-center">
                 <h2 className="featured-quests-title">Featured Quests</h2>
                 {props.trips.length &&
                     <div className="container">
                         <div className="row">
                             <div className="col-sm-4">
+                            <Link to={`/trips/${props.trips[0].id}`}>
                                 <img className="img-thumbnail" src={props.trips[0].imageUrl} />
                                 <h3 className="featured-quest-location">{props.trips[0].location}</h3>
                                 <h4 className="featured-quest-price">${props.trips[0].price}</h4>
+                            </Link>
                             </div>
                             <div className="col-sm-4">
+                            <Link to={`/trips/${props.trips[1].id}`}>
                                 <img className="img-thumbnail" src={props.trips[1].imageUrl} />
                                 <h3 className="featured-quest-location">{props.trips[1].location}</h3>
                                 <h4 className="featured-quest-price">${props.trips[1].price}</h4>
+                            </Link>
                             </div>
                             <div className="col-sm-4">
+                            <Link to={`/trips/${props.trips[2].id}`}>
                                 <img className="img-thumbnail" src={props.trips[2].imageUrl} />
                                 <h3 className="featured-quest-location">{props.trips[2].location}</h3>
                                 <h4 className="featured-quest-price">${props.trips[2].price}</h4>
+                            </Link>
                             </div>
                         </div>
                     </div>

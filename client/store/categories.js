@@ -3,8 +3,6 @@ import axios from 'axios';
 //ACTION TYPES
 const SET_ALL_CATEGORIES = 'SET_ALL_CATEGORIES'
 
-
-
 //ACTION CREATORS
 export function setAllCategories(categories) {
   return { type: SET_ALL_CATEGORIES, categories}
@@ -16,7 +14,6 @@ export const fetchAllCategories = () => {
     axios.get('/api/categories')
       .then(res => res.data)
       .then(categories => {
-        // console.log('Got the trips from the db!', trips.map(trip => trip.categories.map(category => category.name)));
         dispatch(setAllCategories(categories))
       })
       .catch(console.error);

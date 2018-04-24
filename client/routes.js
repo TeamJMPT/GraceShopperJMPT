@@ -12,6 +12,7 @@ import Home from './components/home';
 import AddNewTrip from './components/addNewTrip';
 import EditTrip from './components/editTrip';
 import Cart from './components/cart';
+import OrderHistory from './components/orderHistory';
 
 
 
@@ -51,6 +52,7 @@ class Routes extends Component {
             <Switch>
               {/* Routes placed here are only available after logging in */}
               <Route path="/home" component={UserHome} />
+              <Route path="/orders" component={OrderHistory} />
             </Switch>
         }
         {/* Displays our Login component as a fallback */}

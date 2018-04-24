@@ -33,13 +33,6 @@ const Trip = db.define('trip', {
         }
     }
 }
-// {
-//     defaultScope: {
-//         include: [
-//             {model: Category }
-//         ]
-//     }
-// }
 )
 
 
