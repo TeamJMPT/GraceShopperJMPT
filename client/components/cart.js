@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { fetchAllFromCart } from '../store/cart';
 import { BootstrapTable, TableHeaderColumn } from 'react-bootstrap-table';
+import Checkout from './checkout'
 
 class Cart extends Component {
     componentDidMount() {
