@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 import { fetchAllFromCart } from '../store/cart';
 import { BootstrapTable, TableHeaderColumn } from 'react-bootstrap-table';
 
@@ -28,6 +29,7 @@ class Cart extends Component {
                         Sub-Total
                     </TableHeaderColumn>
                 </BootstrapTable>
+                <Link className='orders' to="/orders"><h3>See Order History</h3></Link>
                 <h4 className='total'>Your Total: {
                     notEmpty ?
                     this.props.cart.map(item => {

@@ -30,6 +30,9 @@ export function addUpdatedTrip(updatedTrip) {
   return {type: ADD_UPDATED_TRIP, updatedTrip}
 }
 
+export function addToCart(addOrder) {
+  return {type: ADD_TO_CART, addOrder}
+}
 
 export function search(searchInput) {
   return {type: SEARCH, searchInput};
@@ -121,4 +124,3 @@ export function singleTripReducer(state = {}, action) {
       return state
   }
 }
-
