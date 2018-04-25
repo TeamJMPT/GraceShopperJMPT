@@ -74,3 +74,22 @@ router.post('/user/:userId', (req, res, next) => {
       })
     .catch(next);
 });
+
+// delete an item from the cart
+router.get('/:orderId', (req, res, next) => {
+    Order.findById(req.params.orderId)
+    .then(order => res.send(order))
+    .catch(next)
+})
+
+router.delete('/:orderId', (req, res, next) => {
+    Order.destroy({
+      where: {
+        id: req.params.orderId
+      }
+    })
+    .then(() => {
+      res.sendStatus(204)
+    })
+    .catch(next)
+})

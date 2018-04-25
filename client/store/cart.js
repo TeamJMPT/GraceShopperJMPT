@@ -6,6 +6,7 @@ const initialState = []
 const ADD_TO_CART = 'ADD_TO_CART';
 const GET_ALL_FROM_CART = 'GET_ALL_FROM_CART';
 const REFRESH_CART = 'REFRESH_CART'
+const DELETE_TRIP = 'DELETE_TRIP'
 
 //ACTION CREATORS
 export function getAllFromCart(orders) {
@@ -18,6 +19,10 @@ export function addToCart(newItem) {
 
 export function refreshCart() {
   return {type: REFRESH_CART}
+}
+
+export function deleteItem(orderId) {
+  return {type: DELETE_TRIP, orderId}
 }
 
 //THUNKS
@@ -49,6 +54,15 @@ export const postNewItem = (newItem) => {
   }
 }
 
+export const removeTrip = (orderId) => {
+  
+  return dispatch => {
+    axios.delete(`/api/orders/${orderId}`)
+      .then(res => res.data)
+      .then(dispatch(deleteItem(orderId)))
+  }
+}
+
 //REDUCER(S)
 export function cartReducer(orders = [], action) {
   switch (action.type) {
@@ -59,6 +73,9 @@ export function cartReducer(orders = [], action) {
       return [...orders, action.newItem]
     case REFRESH_CART:
       return []
+    case DELETE_TRIP:
+     let remainingOrders = orders.filter(order => order.id !== action.orderId) 
+      return remainingOrders
     default:
       return orders
   }
