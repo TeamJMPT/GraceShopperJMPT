@@ -23,7 +23,7 @@ export const fetchAllOrders = (userId) => {
   }
 }
 
-export default function(orders = [], action) {
+export default function orderReducer(orders = [], action) {
     switch (action.type) {
       case GET_ORDERS:
          orders =  action.orders
