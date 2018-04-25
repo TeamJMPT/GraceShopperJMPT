@@ -6,10 +6,6 @@ import { BootstrapTable, TableHeaderColumn } from 'react-bootstrap-table';
 import Checkout from './checkout'
 
 class Cart extends Component {
-    constructor() {
-        super()
-        this.cellButton = this.cellButton.bind(this)
-    }
 
     componentDidMount() {
         this.props.getAllFromCart(this.props.state.user.id);
