@@ -21,7 +21,7 @@ module.exports = app
 const cors = require('cors')
 // const FRONTEND_DEV_URLS = ['http://localhost:8080']
 // const FRONTEND_PROD_URLS = ['http://www.yourdomain.com', 'http://yourdomain.com']
-const CORS_WHITELIST = 'http://localhost:8080' //process.env.NODE_ENV === 'production' ? FRONTEND_PROD_URLS : FRONTEND_DEV_URLS
+const CORS_WHITELIST = 'http://localhost:8080/api/checkout' //process.env.NODE_ENV === 'production' ? FRONTEND_PROD_URLS : FRONTEND_DEV_URLS
 const corsOptions = {
   origin: CORS_WHITELIST//(origin, callback) => {
   // (CORS_WHITELIST.indexOf(origin) !== -1)

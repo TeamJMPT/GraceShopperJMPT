@@ -6,13 +6,26 @@ import { BootstrapTable, TableHeaderColumn } from 'react-bootstrap-table';
 import Checkout from './checkout'
 
 class Cart extends Component {
+    // constructor() {
+    //     super()
+    //     this.getTotal = this.getTotal.bind(this);
+    // }
+
     componentDidMount() {
         this.props.getAllFromCart(this.props.state.user.id);
     }
 
+    // getTotal() {
+    //     this.props.cart.length && this.props.cart.reduce((acc, curr) => {
+    //         return acc + curr.subTotal
+    //     }, 0)
+    // }
+
     render() {
-        let total = 0;
+        console.log("CART!", this.props.cart)
+        // console.log("TOTAL!");
         let notEmpty = this.props.cart.length;
+        let trip;
 
         return (
             <div key={this.props.cart.tripId}>
@@ -33,12 +46,19 @@ class Cart extends Component {
                 <Link className='order-link' to="/orders"><h3 className='order-history'>See Order History</h3></Link>
                 <h4 className='total'>Your Total: {
                     notEmpty ?
-                    this.props.cart.map(item => {
-                        return total + item['subTotal']
-                    })
-                        .reduce((acc, cur) => acc + cur, 0)
-                  : 0}
+                    this.props.cart.reduce((acc, curr) => {
+                            return acc + curr.subTotal
+                        }, 0)
+                    : 0}
                 </h4>
+                <Checkout
+                name="hello"
+                description="goodbye"
+                cartId={this.props.cart.id}
+                amount={this.props.cart.reduce((acc, curr) => {
+                    return acc + curr.subTotal
+                }, 0)}
+                />
             </div>
         )
     }
