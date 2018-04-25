@@ -110,7 +110,7 @@ export function tripReducer(trips = [], action) {
     case ADD_TRIP:
       return [...trips, action.newTrip]
     case ADD_UPDATED_TRIP:
-      return [...trips, action.updatedTrip]
+      return trips.map(t => t.id === action.updatedTrip.id ? action.updatedTrip : t)
     default:
       return trips
   }
@@ -120,6 +120,8 @@ export function singleTripReducer(state = {}, action) {
   switch (action.type) {
     case GET_SINGLE_TRIP:
       return action.selectedTrip
+    case ADD_UPDATED_TRIP:
+      return action.updatedTrip
     default:
       return state
   }
