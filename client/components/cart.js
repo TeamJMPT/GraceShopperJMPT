@@ -24,7 +24,8 @@ class Cart extends Component {
     }
 
     render() {
-        let total = 0;
+        console.log("CART!", this.props.cart)
+        // console.log("TOTAL!");
         let notEmpty = this.props.cart.length;
         console.log("ORDER_ID", this.props.state)
         return (
@@ -62,15 +63,22 @@ class Cart extends Component {
                         Remove
                     </TableHeaderColumn>
                 </BootstrapTable>
-                <Link className='orders' to="/orders"><h3>See Order History</h3></Link>
+                <Link className='order-link' to="/orders"><h3 className='order-history'>See Order History</h3></Link>
                 <h4 className='total'>Your Total: {
                     notEmpty ?
-                    this.props.cart.map(item => {
-                        return total + item['subTotal']
-                    })
-                        .reduce((acc, cur) => acc + cur, 0)
-                  : 0}
+                    this.props.cart.reduce((acc, curr) => {
+                            return acc + curr.subTotal
+                        }, 0)
+                    : 0}
                 </h4>
+                <Checkout
+                name="hello"
+                description="goodbye"
+                cartId={this.props.cart.id}
+                amount={this.props.cart.reduce((acc, curr) => {
+                    return acc + curr.subTotal
+                }, 0)}
+                />
             </div>
         )
     }

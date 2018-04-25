@@ -58,6 +58,13 @@ router.get('/user/:userId', (req, res, next) => {
   .catch(next);
 });
 
+// router.get('/history/user/:userId', (req, res, next) => {
+//   Cart.findAll({where: {userId: req.params.userId}})
+//     .then(carts => carts.filter(cart => cart.status === 'complete'))
+//     .then(completedCarts => res.send(completedCarts))
+//     .catch(next);
+// })
+
 //post a new line item to a user's cart
 router.post('/user/:userId', (req, res, next) => {
     User.findById(req.params.userId)

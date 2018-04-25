@@ -9,9 +9,9 @@ export function getAllOrders(orders) {
 }
 
 //THUNK
-export const fetchAllOrders = () => {
+export const fetchAllOrders = (userId) => {
   return dispatch => {
-    axios.get('/api/orders') ///api/cart/user/${userId} ??
+    axios.get(`/api/orders/user/${userId}`)
       .then(res => {
         console.log("Getting order", res.data)
         return res.data
@@ -23,7 +23,7 @@ export const fetchAllOrders = () => {
   }
 }
 
-export default function(orders = [], action) {
+export default function orderReducer(orders = [], action) {
     switch (action.type) {
       case GET_ORDERS:
          orders =  action.orders

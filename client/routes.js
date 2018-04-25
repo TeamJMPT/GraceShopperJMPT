@@ -13,8 +13,7 @@ import AddNewTrip from './components/addNewTrip';
 import EditTrip from './components/editTrip';
 import Cart from './components/cart';
 import OrderHistory from './components/orderHistory';
-
-
+import Checkout from './components/checkout';
 
 /**
  * COMPONENT
@@ -36,7 +35,8 @@ class Routes extends Component {
         <Route path="/signup" component={Signup} />
         <Route exact path="/trips" component={Trips} />
         <Route exact path= "/trips/:id" component={SingleTrip} />
-        <Route path="/cart" component={Cart} />
+        <Route exact path="/cart" component={Cart} />
+        <Route path="/checkout" component={Checkout} />
         <Route
           path="/trips/category/:id" render={({ match }) => {
           return (<Trips where={trip => {
