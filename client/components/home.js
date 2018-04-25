@@ -42,7 +42,7 @@ const Home = (props) => {
                             </Link>
                             </div>
                             <div className="col-sm-4">
-                            <Link to={`/trips/${props.trips[2].id}`}>
+                            <Link to={`/trips/${props.trips[2].id}`} className='trips'>
                                 <img className="img-thumbnail" src={props.trips[2].imageUrl} />
                                 <h3 className="featured-quest-location">{props.trips[2].location}</h3>
                                 <h4 className="featured-quest-price">${props.trips[2].price}</h4>

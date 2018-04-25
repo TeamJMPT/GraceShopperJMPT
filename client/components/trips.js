@@ -59,13 +59,13 @@ class Trips extends Component {
               <div className="trips"  key={trip.id}>
               <Link to={`/trips/${trip.id}`} className='trips'>
                 <img className="trips-images"src={trip.imageUrl} />
-                <h3>{trip.name}</h3>
-                <h5>{trip.location}</h5>
-                <h5>{`$${trip.price}`}</h5>
+                <h3 className='trip-info'>{trip.name}</h3>
+                <h5 className='trip-info'>{trip.location}</h5>
+                <h5 className='trip-info'>{`$${trip.price}`}</h5>
               </Link>
               </div>
             )
-          })) :<p>No Match</p>
+          })) :<p className='no-match'>No Match</p>
         }
         </div> : <div className="wrap">
         {
@@ -74,9 +74,9 @@ class Trips extends Component {
               <div className="trips"  key={trip.id}>
               <Link to={`/trips/${trip.id}`} className='trips'>
                 <img className="trips-images"src={trip.imageUrl} />
-                <h3>{trip.name}</h3>
-                <h5>{trip.location}</h5>
-                <h5>{`$${trip.price}`}</h5>
+                <h3 className='trip-info'>{trip.name}</h3>
+                <h5 className='trip-info'>{trip.location}</h5>
+                <h5 className='trip-info'>{`$${trip.price}`}</h5>
               </Link>
               </div>
             )

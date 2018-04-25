@@ -22,11 +22,11 @@ class Sidebar extends Component {
                 </i>
               </h3 >
             </div >
-              <h5>Categories:</h5>
+              <h5 className='sidebar-category'>Categories:</h5>
               {
                 categories.map(category => {
                   return (
-                      <Link to={`/trips/category/${category.id}`} key={category.id}>
+                      <Link className='sidebar-trips' to={`/trips/category/${category.id}`} key={category.id}>
                   <ul>{category.name}</ul>
                   </Link>
                   )
