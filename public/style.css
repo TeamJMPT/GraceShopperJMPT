@@ -28,7 +28,8 @@ form div {
   height: 100%;
   flex-wrap: wrap;
   justify-content: center;
-  margin: auto;
+  margin-top: 40px;
+  
 }
 .cart-total{
   justify-content: flex-end;
@@ -71,10 +72,25 @@ form div {
   justify-content: flex-start ;
   margin-right: 63%;
 }
+.no-match{
+  font-size: 2em;
+}
 #cart-img{
   width: 30px;
 }
-
+.login{
+  margin-left: -80px;
+  color: #0d0e0d;
+}
+.login:hover{
+  color: rgb(148, 144, 144);
+}
+.auth{
+  display: inline-block;
+    text-align: center;
+    margin-left: 35%;
+    margin-top: 40px;
+}
 /* .main-img{
  
 } */
@@ -152,6 +168,61 @@ header.home-welcome {
   padding: 0;
 }
 
+.trip-info{
+  font-size: 1.3rem;
+}
+.trips:link {
+  color: black;
+}
+.trips:visited {
+  color: black;
+}
+.trips:hover{
+    color: rgb(148, 144, 144);
+    text-decoration: none;
+}
+.featured-quest-location{
+  color: black;
+}
+.featured-quest-location:link {
+  color: black;
+}
+
+.featured-quest-location:visited {
+  color: black;
+}
+.featured-quest-location:hover{
+  color: rgb(148, 144, 144);
+  text-decoration: none;
+}
+
+.featured-quest-price{
+  color: black;
+}
+.featured-quest-price:link {
+  color: black;
+}
+.featured-quest-price:visited {
+  color: black;
+}
+.featured-quest-price:hover{
+  color: rgb(148, 144, 144);
+  text-decoration: none;
+}
+
+ul{
+  color: black;
+}
+.sidebar-category{
+  margin-bottom: 40px;
+}
+.sidebar-trips:hover{
+  color: rgb(148, 144, 144);
+  text-decoration: none;
+}
+.no-match{
+
+}
 /* FEATURED QUESTS */
 /* add 2 last */
 .featured-quests-title {
@@ -159,6 +230,7 @@ header.home-welcome {
   margin-top: 30px;
   padding: 43px;
 }
+
 
 .featured-quest-img {
   max-width: 100%;
